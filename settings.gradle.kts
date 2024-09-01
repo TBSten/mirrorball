@@ -32,6 +32,6 @@ dependencyResolutionManagement {
 }
 
 include(":core")
-include(":demo:client")
-include(":demo:shared")
-include(":demo:server")
+include(":demo:basic:client")
+include(":demo:basic:shared")
+include(":demo:basic:server")
