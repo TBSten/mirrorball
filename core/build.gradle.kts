@@ -2,14 +2,10 @@ plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.jetbrainsCompose)
     alias(libs.plugins.compose.compiler)
-    application
 }
 
 kotlin {
-    jvm {
-        this.withJava()
-        withSourcesJar(true)
-    }
+    jvm()
 
     js {
         browser {
@@ -19,9 +15,12 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             implementation(compose.runtime)
+            implementation(libs.kotlinx.html)
+            implementation(libs.kotlinx.coroutines)
+            implementation(libs.kotlin.wrappers.css)
+            implementation("com.goncalossilva:murmurhash:0.4.0")
         }
         jvmMain.dependencies {
-//            api("org.jetbrains.kotlin:kotlin-stdlib-jdk17:2.0.0")
         }
     }
 }
