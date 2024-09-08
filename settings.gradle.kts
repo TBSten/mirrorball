@@ -1,4 +1,4 @@
-rootProject.name = "compose-dom"
+rootProject.name = "mirrorball"
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
 pluginManagement {
