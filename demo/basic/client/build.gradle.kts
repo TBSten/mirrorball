@@ -1,4 +1,6 @@
 import org.jetbrains.kotlin.gradle.targets.js.webpack.KotlinWebpackConfig
+import org.jetbrains.kotlin.gradle.targets.js.webpack.KotlinWebpackCssRule
+import org.jetbrains.kotlin.gradle.targets.js.webpack.KotlinWebpackRule
 
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
@@ -11,6 +13,13 @@ kotlin {
         moduleName = "demo-app"
         browser {
             commonWebpackConfig {
+
+                cssSupport {
+                    enabled = true
+                    mode.set("extract")
+                    outputFileName = "webpack-css-output"
+                    this.test.set("/\\.css$/i")
+                }
                 outputFileName = "demo-app.js"
                 devServer = (devServer ?: KotlinWebpackConfig.DevServer()).apply {
                     static = (static ?: mutableListOf()).apply {
@@ -18,7 +27,7 @@ kotlin {
                         add(project.projectDir.path)
                     }
                 }
-                mode = KotlinWebpackConfig.Mode.DEVELOPMENT
+//                mode = KotlinWebpackConfig.Mode.DEVELOPMENT
             }
         }
         binaries.executable()
@@ -32,6 +41,7 @@ kotlin {
             implementation(compose.runtime)
             implementation(projects.demo.basic.shared)
             implementation(libs.kotlinx.coroutines)
+            implementation(libs.kotlin.wrappers.css)
         }
     }
 }
