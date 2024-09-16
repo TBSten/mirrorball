@@ -18,11 +18,7 @@ kotlin {
             implementation(libs.kotlinx.html)
             implementation(libs.kotlinx.coroutines)
             implementation(libs.kotlin.wrappers.css)
-
-            api(projects.core.api)
-            api(projects.core.generated)
-        }
-        jvmMain.dependencies {
+            implementation(projects.core.api)
         }
     }
 }
