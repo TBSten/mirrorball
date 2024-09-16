@@ -1,13 +1,23 @@
 package me.tbsten.compose.dom.demo
 
-import androidx.compose.runtime.*
-import kotlinx.css.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import kotlinx.css.Color
+import kotlinx.css.Padding
+import kotlinx.css.TextAlign
+import kotlinx.css.backgroundColor
+import kotlinx.css.fontSize
+import kotlinx.css.padding
+import kotlinx.css.px
+import kotlinx.css.textAlign
 import me.tbsten.compose.dom.attributes.AttrsScope
-import me.tbsten.compose.dom.attributes.className
 import me.tbsten.compose.dom.attributes.style
 import me.tbsten.compose.dom.element.event.onClick
-import me.tbsten.compose.dom.elements.button.Button
-import me.tbsten.compose.dom.elements.div.Div
+import me.tbsten.compose.dom.elements.Button
+import me.tbsten.compose.dom.elements.Div
 
 @Composable
 internal fun CounterExampleScreen() {
@@ -21,13 +31,13 @@ internal fun CounterExampleScreen() {
         }
 
         Div {
-            Button(attrs = { className("button") }) {
+            Button(attrs = { /* TODO className("button") */ }) {
                 onClick { counter++ }
                 +"count up"
             }
 
             Button(
-                attrs = { className("button") },
+                attrs = { /* TODO className("button")*/ },
             ) {
                 onClick { counter-- }
                 +"count down"

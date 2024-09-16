@@ -1,7 +1,7 @@
 package me.tbsten.compose.dom.demo
 
 import kotlinx.browser.document
-import me.tbsten.compose.dom.elements.div.Div
+import me.tbsten.compose.dom.elements.Div
 import me.tbsten.compose.dom.renderComposable
 import org.w3c.dom.HTMLElement
 
@@ -13,5 +13,7 @@ fun main() {
         CounterExampleScreen()
         Div { +"---" }
         TextFieldExampleScreen()
+        Div { +"---" }
+        Div { +"kotlin: ${KotlinVersion.CURRENT}" }
     }
 }
