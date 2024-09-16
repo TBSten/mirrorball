@@ -21,6 +21,8 @@ kotlinx-html = { module = "org.jetbrains.kotlinx:kotlinx-html", version = "0.11.
 kotlinx-coroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version = "1.9.0-RC.2" }
 kotlin-wrappers-css = { module = "org.jetbrains.kotlin-wrappers:kotlin-css", version = "1.0.0-pre.803" }
 
+kotlin-poet = { module="com.squareup:kotlinpoet", version = "1.18.1" }
+
 [plugins]
 jetbrainsCompose = { id = "org.jetbrains.compose", version.ref = "compose-plugin" }
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
