@@ -20,7 +20,7 @@ kotlin {
             implementation(libs.kotlin.wrappers.css)
 
             api(projects.core.api)
-            api(projects.core.generated)
+            api(projects.core.htmlLib)
         }
         jvmMain.dependencies {
         }

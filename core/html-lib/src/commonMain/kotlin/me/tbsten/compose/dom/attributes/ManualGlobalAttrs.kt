@@ -2,10 +2,13 @@ package me.tbsten.compose.dom.attributes
 
 import kotlinx.css.CssBuilder
 
-fun AttrsScope.style(block: CssBuilder.() -> Unit) =
+fun AttrsScope.style(block: CssBuilder.() -> Unit) {
     attr("style", CssBuilder().apply(block).toString())
+}
 
-fun AttrsScope.hidden(hidden: Hidden) = attr("hidden", hidden.value)
+fun AttrsScope.hidden(hidden: Hidden) {
+    attr("hidden", hidden.value)
+}
 
 // FIXME: enum名と同じentryを定義できないため、ワークアラウンドとして別途定義している。
 enum class Hidden {

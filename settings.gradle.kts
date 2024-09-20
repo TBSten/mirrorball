@@ -33,7 +33,8 @@ dependencyResolutionManagement {
 
 include(":core")
 include(":core:api")
-include(":core:generated")
+include(":core:html-lib")
+
 include(":generate")
 
 include(":demo:basic:client")

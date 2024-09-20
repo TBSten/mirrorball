@@ -6,11 +6,13 @@ plugins {
     alias(libs.plugins.compose.compiler)
 }
 
-group = "me.tbsten.compose.dom.demo.basic"
+group = "me.tbsten.compose.dom.demo.basic.server"
 version = "1.0.0"
 application {
-    mainClass.set("me.tbsten.compose.dom.ApplicationKt")
-    applicationDefaultJvmArgs = listOf("-Dio.ktor.development=${extra["io.ktor.development"] ?: "false"}")
+    mainClass.set("me.tbsten.compose.dom.demo.basic.server.ApplicationKt")
+    applicationDefaultJvmArgs = listOf(
+        "-Dio.ktor.development=${extra["io.ktor.development"] ?: "false"}",
+    )
 }
 
 dependencies {
@@ -24,4 +26,7 @@ dependencies {
     implementation(compose.runtime)
     implementation(libs.kotlinx.coroutines)
     implementation(libs.kotlin.wrappers.css)
+
+    implementation(projects.core.api)
+    implementation(projects.core.htmlLib)
 }

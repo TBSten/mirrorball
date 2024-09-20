@@ -21,7 +21,7 @@ tasks.named<JavaExec>("run") {
     val generateDir =
         File(
             rootProject.layout.projectDirectory.asFile,
-            "core/generated/src/commonMain/kotlin/me/tbsten/compose/dom/generated/",
+            "core/html-lib/src/commonMain/kotlin/me/tbsten/compose/dom/generated/",
         )
-    args = listOf(generateDir.toString())  // ここに引数をリスト形式で指定
+    args = listOf(generateDir.toString())
 }
