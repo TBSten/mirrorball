@@ -4,12 +4,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.ControlledComposition
 import androidx.compose.runtime.Recomposer
 import kotlinx.coroutines.Dispatchers
+import me.tbsten.compose.dom.styleSheet.JvmMirrorballStyleSheet
 import org.w3c.dom.Document
-import org.w3c.dom.Element
 import org.w3c.dom.Node
-import org.w3c.dom.html.HTMLElement
 
 fun Node.renderComposable(
+    styleSheet: JvmMirrorballStyleSheet,
     content: @Composable () -> Unit,
 ) {
     val recompositionContext = Dispatchers.Main
@@ -21,11 +21,13 @@ fun Node.renderComposable(
     )
 
     composition.setContent {
-        ProvideRoot(
-            document = if (this is Document) this else this.ownerDocument,
-            rootNode = this,
-            content = content,
-        )
+        MirrorballRoot(styleSheet = styleSheet) {
+            ProvideRoot(
+                document = if (this is Document) this else this.ownerDocument,
+                rootNode = this,
+                content = content,
+            )
+        }
     }
 
     // not support recomposition in jvm .

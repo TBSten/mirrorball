@@ -8,22 +8,29 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.CoroutineStart
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import me.tbsten.compose.dom.styleSheet.JsMirrorballStyleSheet
 import org.w3c.dom.HTMLElement
 
 fun HTMLElement.renderComposable(
+    styleSheet: JsMirrorballStyleSheet = JsMirrorballStyleSheet(),
     content: @Composable () -> Unit,
 ) {
     GlobalSnapshotManager.ensureStarted()
 
     val recompositionContext = DefaultMonotonicFrameClock + Dispatchers.Main
     val recomposer = Recomposer(recompositionContext)
+    val applier = JsDomApplier(this)
 
     val composition = ControlledComposition(
-        applier = JsDomApplier(this),
+        applier = applier,
         parent = recomposer,
     )
 
-    composition.setContent(content)
+    composition.setContent {
+        MirrorballRoot(styleSheet = styleSheet) {
+            content()
+        }
+    }
 
     CoroutineScope(recompositionContext).launch(start = CoroutineStart.UNDISPATCHED) {
         recomposer.runRecomposeAndApplyChanges()
