@@ -21,3 +21,6 @@ idea
 
 *.log
 .DS_Store
+
+!.idea/dictionaries/mirrorballDictionary.xml
+
