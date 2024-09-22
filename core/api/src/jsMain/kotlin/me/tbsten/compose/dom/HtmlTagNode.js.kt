@@ -28,7 +28,6 @@ actual fun HtmlTag(
         },
         update = {
             attrsScope.attrsMap.forEach { (name, value) ->
-                console.log("setAttr", name, value)
                 set(name to value) {
                     setAttribute(name, value)
                 }

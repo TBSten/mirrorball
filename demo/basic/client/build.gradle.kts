@@ -1,6 +1,4 @@
 import org.jetbrains.kotlin.gradle.targets.js.webpack.KotlinWebpackConfig
-import org.jetbrains.kotlin.gradle.targets.js.webpack.KotlinWebpackCssRule
-import org.jetbrains.kotlin.gradle.targets.js.webpack.KotlinWebpackRule
 
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
