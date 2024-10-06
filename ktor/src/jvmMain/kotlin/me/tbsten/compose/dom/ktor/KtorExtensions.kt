@@ -72,7 +72,7 @@ fun Routing.composable(
             val linkStyleSheet = @Composable {
                 Link(attrs = {
                     rel("stylesheet")
-                    href(styleSheetPath)
+                    href("./$styleSheetPath")
                 })
             }
             scope._content(linkStyleSheet)
