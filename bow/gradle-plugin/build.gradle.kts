@@ -3,6 +3,7 @@ plugins {
     `java-gradle-plugin`
     `maven-publish`
     alias(libs.plugins.kotlinx.serialization)
+    alias(libs.plugins.mirrorball.gralde.plugin)
 }
 
 dependencies {

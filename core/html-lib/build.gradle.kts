@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.jetbrainsCompose)
     alias(libs.plugins.compose.compiler)
+    alias(libs.plugins.mirrorball.library)
 }
 
 kotlin {
@@ -23,3 +24,8 @@ kotlin {
     }
 }
 
+ktlint {
+    filter {
+        exclude("src/commonMain/kotlin/me/tbsten/compose/dom/generated/**")
+    }
+}

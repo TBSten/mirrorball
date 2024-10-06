@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.kotlinJvm)
     alias(libs.plugins.kotlinx.serialization)
+    alias(libs.plugins.mirrorball.ksp.plugin)
 }
 
 dependencies {

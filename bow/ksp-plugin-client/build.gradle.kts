@@ -1,5 +1,6 @@
 plugins {
-    kotlin("jvm")
+    alias(libs.plugins.kotlinJvm)
+    alias(libs.plugins.mirrorball.ksp.plugin)
 }
 
 dependencies {

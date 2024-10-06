@@ -7,6 +7,7 @@ plugins {
     alias(libs.plugins.kotlinMultiplatform) apply false
     alias(libs.plugins.ksp) apply false
     alias(libs.plugins.ktor) apply false
+    alias(libs.plugins.ktlint) apply false
 
     id("me.tbsten.compose.dom.bow") version "0.0.1" apply false
     id("me.tbsten.compose.dom.bow.server") version "0.0.1" apply false
