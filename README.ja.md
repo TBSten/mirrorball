@@ -31,7 +31,7 @@ mirrorballは複数のライブラリから構成されています。使用用�
   HTMLとComposeとの基本的な統合のコードが含まれています。mirrorballを使用するほぼすべてのプロジェクトで必要になります。
 - [`mirrorball-ui`](./ui/README.ja.md) (WIP) ...
   mirrorballを使ってcomposeライクにWebフロントエンドを構築するためのライブラリ。composeにおけるcompose-uiやcompose-foundationに相当します。
-- [`mirrorball-navigation`](./navigation/README.jp.md) (WIP) ... URLに応じて画面遷移を簡単に実装するためのライブラリ。
+- [`mirrorball-navigation`](./navigation/README.ja.md) (WIP) ... URLに応じて画面遷移を簡単に実装するためのライブラリ。
   composeにおけるcompose-navigationに相当します。
 
 これらのライブラリを組み合わせて使用することも、
