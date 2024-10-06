@@ -5,9 +5,9 @@ import com.google.devtools.ksp.processing.Dependencies
 import com.google.devtools.ksp.processing.KSPLogger
 import com.google.devtools.ksp.processing.Resolver
 import com.google.devtools.ksp.processing.SymbolProcessor
-import com.google.devtools.ksp.symbol.ClassKind
 import com.google.devtools.ksp.symbol.KSAnnotated
-import com.google.devtools.ksp.symbol.KSClassDeclaration
+import com.google.devtools.ksp.symbol.KSFunctionDeclaration
+import com.google.devtools.ksp.symbol.KSType
 
 class MirrorballSlotImplementationProcessor(
     private val codeGenerator: CodeGenerator,
@@ -20,51 +20,46 @@ class MirrorballSlotImplementationProcessor(
     override fun process(resolver: Resolver): List<KSAnnotated> {
         if (processed) return emptyList()
         else processed = true
-        logger.info("MirrorballSlotImplementationProcessor: start")
-        val slotImplementations =
-            resolver.getSymbolsWithAnnotation(MirrorballSlotImplementation::class.qualifiedName!!)
-                .toList()
-        logger.info("annotated symbols (${slotImplementations.size}):")
-        val slotContentTable = mutableMapOf<String, String>()
-        slotImplementations.forEach { slotImpl ->
-            if (!slotImpl.isObject()) mbError("@MirrorballSlotImplementation must be a object")
-            slotImpl as KSClassDeclaration
-            val slotImplName = slotImpl.qualifiedName?.asString()!!
 
-            // MirrorballSlotImplementationはSlotContentを継承する必要がある
-            val slotContent =
-                slotImpl.superTypes
-                    .filter { it.resolve().declaration.qualifiedName?.asString() == "me.tbsten.compose.dom.bow.SlotContent" }
-                    .firstOrNull()
-            if (slotContent == null) {
-                mbError(
-                    "@MirrorballSlotImplementation class must be a object that implements SlotContent"
-                )
+        val slotImplAnnotationName =
+            requireNotNull(MirrorballSlotImplementation::class.qualifiedName)
+        val slotImplFunctions = resolver.getSymbolsWithAnnotation(slotImplAnnotationName)
+            .filterIsInstance<KSFunctionDeclaration>()
+
+        val slotImplPairs = buildMap<KSType, KSFunctionDeclaration> {
+            slotImplFunctions.forEach { impl ->
+                val slotImplAnnotationArguments =
+                    impl.annotations.find {
+                        it.annotationType.resolve().declaration.qualifiedName?.asString() == slotImplAnnotationName
+                    }?.arguments
+                val slotClass =
+                    slotImplAnnotationArguments
+                        ?.find { it.name?.asString() == "slot" }
+                        ?.value as KSType
+                put(slotClass, impl)
             }
-
-            val slot = slotContent.resolve().arguments[0]
-            val slotName = slot.type?.resolve()?.declaration?.qualifiedName?.asString()!!
-
-            slotContentTable[slotName] = slotImplName
-            logger.info("  find slot and slotContent pair: $slotName to $slotImplName")
         }
 
-        // mapを生成する
+        val packageName = "me.tbsten.compose.dom.bow.generated"
         codeGenerator.createNewFile(
-            Dependencies.ALL_FILES,
-            packageName = "me.tbsten.compose.dom.bow.generated",
-            fileName = "GeneratedSlotContentTable",
+            Dependencies(
+                false,
+                *slotImplFunctions
+                    .map { it.containingFile }
+                    .filterNotNull()
+                    .toList()
+                    .toTypedArray(),
+            ),
+            packageName = packageName,
+            fileName = "InjectClientSlots",
         ).use { output ->
             output.writer().use { writer ->
-                writer.writeMirrorballSlotContentTableEntries(slotContentTable)
+                writer.writeInjectClientSlots(
+                    packageName = packageName,
+                    slotImplPairs = slotImplPairs,
+                )
             }
         }
         return listOf()
     }
 }
-
-private fun KSAnnotated.isObject() =
-    this is KSClassDeclaration && this.classKind == ClassKind.OBJECT
-
-internal fun mbError(message: String): Nothing =
-    error("[ERROR] 🪩 $message")

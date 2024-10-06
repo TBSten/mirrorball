@@ -1,4 +1,6 @@
 package me.tbsten.compose.dom.bow
 
-@Target(AnnotationTarget.CLASS)
-annotation class MirrorballSlotImplementation
+import kotlin.reflect.KClass
+
+@Target(AnnotationTarget.FUNCTION)
+annotation class MirrorballSlotImplementation(val slot: KClass<out Slot>)
