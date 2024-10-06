@@ -5,4 +5,15 @@ plugins {
     alias(libs.plugins.compose.compiler) apply false
     alias(libs.plugins.kotlinJvm) apply false
     alias(libs.plugins.kotlinMultiplatform) apply false
+    alias(libs.plugins.ksp) apply false
+    alias(libs.plugins.ktor) apply false
+
+    id("me.tbsten.compose.dom.bow") version "0.0.1" apply false
+    id("me.tbsten.compose.dom.bow.server") version "0.0.1" apply false
+}
+
+buildscript {
+    dependencies {
+        classpath(kotlin("gradle-plugin", version = "2.0.20"))
+    }
 }
