@@ -22,6 +22,8 @@ dependencyResolutionManagement {
 include(":core")
 include(":core:api")
 include(":core:html-lib")
+include(":ktor")
+
 include(":bow")
 include(":bow:gradle-plugin")
 include(":bow:ksp-plugin-client")
