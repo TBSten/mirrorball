@@ -10,7 +10,7 @@ fun Writer.writeInjectClientSlots(
 ) {
     writeln("package $packageName")
     writeln()
-    writeln("import me.tbsten.compose.dom.bow.injectSlotImpl")
+    writeln("import me.tbsten.compose.dom.bow.slot.injectSlotImpl")
     writeln()
     writeln("fun injectClientSlots() {")
     slotImplPairs.forEach { (slotClass, implFun) ->
