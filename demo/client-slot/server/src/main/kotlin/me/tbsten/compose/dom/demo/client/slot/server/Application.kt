@@ -7,10 +7,12 @@ import io.ktor.server.netty.Netty
 import io.ktor.server.routing.Routing
 import io.ktor.server.routing.getAllRoutes
 import io.ktor.server.routing.routing
+import me.tbsten.compose.dom.bow.SerializableComposableLambda
 import me.tbsten.compose.dom.bow.server.generated.BowBuildOutputDir
 import me.tbsten.compose.dom.bow.slot.ClientSlot
 import me.tbsten.compose.dom.demo.client.slot.shared.BasicSlot
 import me.tbsten.compose.dom.demo.client.slot.shared.SlotWithArgs
+import me.tbsten.compose.dom.demo.client.slot.shared.SlotWithComposableArg
 import me.tbsten.compose.dom.elements.Body
 import me.tbsten.compose.dom.elements.Div
 import me.tbsten.compose.dom.elements.H1
@@ -48,14 +50,27 @@ fun Application.module() {
                         Div {
                             +"this render on server"
                         }
+
                         H2 {
                             +"basic slot"
                         }
                         ClientSlot(BasicSlot)
+
                         H2 {
                             +"slot with args"
                         }
                         ClientSlot(SlotWithArgs(str = "test-1", int = 12345))
+
+                        H2 {
+                            +"slot with @Composable args"
+                        }
+                        ClientSlot(
+                            SlotWithComposableArg(
+                                renderResult = SerializableComposableLambda {
+                                    Div { +"this is render on server" }
+                                },
+                            )
+                        )
                     }
                 }
             }
