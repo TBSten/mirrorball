@@ -1,4 +1,4 @@
-# mirrorball -kotlin web framework powered by compose-
+# mirrorball -kotlin web framework powered by compose-runtime
 
 mirrorball ("Mirabo") はKotlinとJetpack Composeを使ってWebアプリを開発するためのフレームワークです。
 
