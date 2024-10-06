@@ -4,9 +4,11 @@ plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.jetbrainsCompose)
     alias(libs.plugins.compose.compiler)
+    alias(libs.plugins.ksp)
 }
 
 kotlin {
+    jvm()
     js {
         moduleName = "demo-app"
         browser {
@@ -21,11 +23,9 @@ kotlin {
                 outputFileName = "demo-app.js"
                 devServer = (devServer ?: KotlinWebpackConfig.DevServer()).apply {
                     static = (static ?: mutableListOf()).apply {
-                        // Serve sources to debug inside browser
                         add(project.projectDir.path)
                     }
                 }
-//                mode = KotlinWebpackConfig.Mode.DEVELOPMENT
             }
         }
         binaries.executable()
@@ -33,15 +33,17 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
-//            implementation(projects.demo.shared)
+            api(projects.bow)
+            api(projects.bow.runtime)
         }
         jsMain.dependencies {
             implementation(compose.runtime)
             implementation(compose.animation)
-            implementation(projects.demo.basic.shared)
             implementation(libs.kotlinx.coroutines)
             implementation(libs.kotlin.wrappers.css)
         }
     }
+    dependencies {
+        ksp(projects.bow.kspPluginClient)
+    }
 }
-
