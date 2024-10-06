@@ -26,7 +26,6 @@ import me.tbsten.compose.dom.elements.src
 import me.tbsten.compose.dom.ktor.composable
 
 fun main() {
-//    println("BowClientModules: ${BowClientModules.joinToString(", ")}")
     val host = System.getProperty("bow.host") ?: "0.0.0.0"
     val port = System.getProperty("bow.port")?.toIntOrNull() ?: 8080
     embeddedServer(
@@ -39,15 +38,19 @@ fun main() {
 
 fun Application.module() {
     bowRouting {
-        composable("/") { LinkStyleSheet ->
-            TopContent(
-                linkStyleSheet = LinkStyleSheet,
-            )
+        composable("/") {
+            content { linkStyleSheet ->
+                TopContent(
+                    linkStyleSheet = linkStyleSheet,
+                )
+            }
         }
-        composable("/top") { LinkStyleSheet ->
-            TopContent(
-                linkStyleSheet = LinkStyleSheet,
-            )
+        composable("/top") {
+            content { linkStyleSheet ->
+                TopContent(
+                    linkStyleSheet = linkStyleSheet,
+                )
+            }
         }
     }
 }
