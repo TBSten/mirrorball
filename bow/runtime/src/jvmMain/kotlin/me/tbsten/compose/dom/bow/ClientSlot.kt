@@ -10,8 +10,9 @@ import me.tbsten.compose.dom.elements.Script
 
 @Composable
 inline fun <reified S : Slot> ClientSlot(slot: S) {
-    val slotClassName = S::class.qualifiedName
-        ?: throw IllegalArgumentException("Client Slot qualifiedName is null")
+    val slotClassName =
+        S::class.qualifiedName
+            ?: throw IllegalArgumentException("Client Slot qualifiedName is null")
     val id = "--bow-client-slot-$slotClassName"
     val slotArgsId = "--bow-client-slot-args-$slotClassName"
 

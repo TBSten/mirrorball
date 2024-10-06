@@ -12,22 +12,24 @@ fun Project.registerRunTask(
 ) {
     val capitalizedConfName = bowConfiguration.capitalizedConfName
     tasks.registerBowTask(
-        "bowRun${capitalizedConfName}",
+        "bowRun$capitalizedConfName",
         "<TODO>",
     ) { runTask ->
 
         val buildTask = tasks.getByName("bowBuild${bowConfiguration.capitalizedConfName}")
 
-        val serverProject = bowExtension.entryProjects.serverProject
-            .requireNotNull { "Not Configured `bow.entryProjects.server`." }
-        val serverRunTask = bowConfiguration.jvmRunTask
-            .requireNotNull { "Can not find `${bowConfiguration.jvmBuildTask}` task in $bowConfiguration Configuration." }
-            .let {
-                when (it) {
-                    is JvmRunTask.RunTask -> serverProject.tasks.getByName(it.taskName)
-                    is JvmRunTask.Error -> throw IllegalArgumentException(it.message)
+        val serverProject =
+            bowExtension.entryProjects.serverProject
+                .requireNotNull { "Not Configured `bow.entryProjects.server`." }
+        val serverRunTask =
+            bowConfiguration.jvmRunTask
+                .requireNotNull { "Can not find `${bowConfiguration.jvmBuildTask}` task in $bowConfiguration Configuration." }
+                .let {
+                    when (it) {
+                        is JvmRunTask.RunTask -> serverProject.tasks.getByName(it.taskName)
+                        is JvmRunTask.Error -> throw IllegalArgumentException(it.message)
+                    }
                 }
-            }
 
         runTask.dependsOn(
             buildTask,

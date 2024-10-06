@@ -17,9 +17,8 @@ private fun elementContentScopeSpec(composableName: String) =
         .primaryConstructor(
             FunSpec.constructorBuilder()
                 .addParameter("ref", HtmlTagRef::class)
-                .build()
+                .build(),
         )
         .superclass(HtmlTagContentScope::class)
         .addSuperclassConstructorParameter("ref")
         .build()
-

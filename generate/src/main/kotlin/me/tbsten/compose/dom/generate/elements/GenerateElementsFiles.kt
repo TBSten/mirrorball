@@ -10,18 +10,17 @@ import java.io.File
 /**
  * generateDirectory/elements/<element> ディレクトリにcomponentのファイルを生成する。
  */
-suspend fun generateElementsFiles(
-    generateDirectory: File,
-) = coroutineScope {
-    elements.map { element ->
-        launch {
-            generateElementFiles(
-                element,
-                generateDirectory,
-            )
-        }
-    }.joinAll()
-}
+suspend fun generateElementsFiles(generateDirectory: File) =
+    coroutineScope {
+        elements.map { element ->
+            launch {
+                generateElementFiles(
+                    element,
+                    generateDirectory,
+                )
+            }
+        }.joinAll()
+    }
 
 private suspend fun generateElementFiles(
     element: Element,
@@ -38,12 +37,13 @@ private suspend fun generateElementFiles(
         elementAttrsScopeFile(
             composableName,
             initialAttrs = element.initialAttrs,
-            attrs = element.attrs
+            attrs = element.attrs,
         ) to File(packageDir, "${composableName}AttrsScope.kt"),
-        elementContentScopeFile(composableName) to File(
-            packageDir,
-            "${composableName}ContentScope.kt"
-        ),
+        elementContentScopeFile(composableName) to
+            File(
+                packageDir,
+                "${composableName}ContentScope.kt",
+            ),
     ).forEach { (fileSpec, file) ->
         if (!file.parentFile.exists()) file.parentFile.mkdirs()
         file.createNewFile()
@@ -52,7 +52,7 @@ private suspend fun generateElementFiles(
             it.write(
                 fileSpec
                     .build()
-                    .toString()
+                    .toString(),
             )
         }
     }

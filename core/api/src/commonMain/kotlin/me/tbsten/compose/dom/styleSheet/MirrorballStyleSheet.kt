@@ -36,8 +36,7 @@ abstract class MirrorballStyleSheet(internal val key: Key = GlobalStyleSheetKey)
             }
             .toString()
 
-    override fun hashCode(): Int =
-        builders.hashCode()
+    override fun hashCode(): Int = builders.hashCode()
 
     override fun equals(other: Any?): Boolean {
         if (other !is MirrorballStyleSheet) return false
@@ -48,6 +47,7 @@ abstract class MirrorballStyleSheet(internal val key: Key = GlobalStyleSheetKey)
     value class Key(val value: String)
 }
 
-val LocalMirrorballStyleSheet = compositionLocalOf<MirrorballStyleSheet> {
-    error("Can not get LocalMirrorballStyleSheet.current. You forgot surround by MirrorballStyleSheet ?")
-}
+val LocalMirrorballStyleSheet =
+    compositionLocalOf<MirrorballStyleSheet> {
+        error("Can not get LocalMirrorballStyleSheet.current. You forgot surround by MirrorballStyleSheet ?")
+    }

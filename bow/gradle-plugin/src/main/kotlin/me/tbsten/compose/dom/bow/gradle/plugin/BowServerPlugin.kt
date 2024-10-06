@@ -14,7 +14,6 @@ open class BowServerPlugin : Plugin<Project> {
                     archiveFileName.set("mirrorball-bow-server-output.jar")
                 }
             }
-
         }
     }
 }

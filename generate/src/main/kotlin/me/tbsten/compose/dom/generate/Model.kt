@@ -1,6 +1,5 @@
 package me.tbsten.compose.dom.generate
 
-
 data class Element(
     val elementName: String,
     val kotlinName: String = lowerCamelCase2UpperCamelCase(elementName),
@@ -31,11 +30,15 @@ fun elementOf(
 class ElementAttrsBuilderScope {
     val attrs = mutableListOf<Attribute>()
     val initialAttrs = mutableMapOf<String, String>()
+
     operator fun Attribute.unaryPlus() {
         attrs.add(this)
     }
 
-    fun initialAttr(name: String, value: String) {
+    fun initialAttr(
+        name: String,
+        value: String,
+    ) {
         initialAttrs[name] = value
     }
 }
@@ -100,6 +103,7 @@ fun ElementAttrsBuilderScope.enumAttr(
 
 class EnumAttrValuesScope {
     val values = mutableListOf<EnumAttributeEntry>()
+
     operator fun EnumAttributeEntry.unaryPlus() {
         values.add(this)
     }
@@ -117,9 +121,8 @@ fun EnumAttrValuesScope.entry(
 ) = EnumAttributeEntry(entryName, entryValue).also { +it }
 
 @ElementDefineDsl
-fun EnumAttrValuesScope.entry(
-    entryValue: String,
-) = entry(
-    kebabCase2UpperCamelCase(entryValue),
-    entryValue,
-)
+fun EnumAttrValuesScope.entry(entryValue: String) =
+    entry(
+        kebabCase2UpperCamelCase(entryValue),
+        entryValue,
+    )

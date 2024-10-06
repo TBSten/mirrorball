@@ -8,15 +8,17 @@ import org.gradle.api.Project
 open class BowPlugin : Plugin<Project> {
     override fun apply(project: Project) {
         with(project) {
-            val bowExtension = extensions.create(
-                "bow",
-                BowPluginExtension::class.java,
-            ).apply { appliedProject = project }
+            val bowExtension =
+                extensions.create(
+                    "bow",
+                    BowPluginExtension::class.java,
+                ).apply { appliedProject = project }
 
             afterEvaluate {
                 bowExtension.configurations.forEach { conf ->
-                    val buildOutputDir = layout.buildDirectory
-                        .dir("bow/${conf.confName}")
+                    val buildOutputDir =
+                        layout.buildDirectory
+                            .dir("bow/${conf.confName}")
 
                     val serverProject =
                         bowExtension.entryProjects.serverProject
@@ -26,11 +28,8 @@ open class BowPlugin : Plugin<Project> {
 
                     registerBuildTask(conf, buildOutputDir, bowExtension)
                     registerRunTask(conf, buildOutputDir, bowExtension)
-
                 }
             }
-
         }
     }
 }
-

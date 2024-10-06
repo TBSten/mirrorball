@@ -9,31 +9,30 @@ import me.tbsten.compose.dom.generate.EnumAttribute
 fun attrEnumTypeSpec(
     attr: EnumAttribute,
     enumName: ClassName,
-) =
-    TypeSpec
-        .enumBuilder(enumName)
-        .primaryConstructor(
-            FunSpec.constructorBuilder()
-                .addParameter("enumValue", String::class)
-                .build()
-        )
-        .addProperty(
-            PropertySpec.builder("enumValue", String::class)
-                .initializer("enumValue")
-                .build()
-        )
-        .run {
-            attr.values.fold(this) { enumBuilder, enumEntry ->
-                enumBuilder
-                    .addEnumConstant(
-                        enumEntry.entryName,
-                        TypeSpec.anonymousClassBuilder()
-                            .addSuperclassConstructorParameter(
-                                "%S",
-                                enumEntry.entryValue
-                            )
-                            .build(),
-                    )
-            }
+) = TypeSpec
+    .enumBuilder(enumName)
+    .primaryConstructor(
+        FunSpec.constructorBuilder()
+            .addParameter("enumValue", String::class)
+            .build(),
+    )
+    .addProperty(
+        PropertySpec.builder("enumValue", String::class)
+            .initializer("enumValue")
+            .build(),
+    )
+    .run {
+        attr.values.fold(this) { enumBuilder, enumEntry ->
+            enumBuilder
+                .addEnumConstant(
+                    enumEntry.entryName,
+                    TypeSpec.anonymousClassBuilder()
+                        .addSuperclassConstructorParameter(
+                            "%S",
+                            enumEntry.entryValue,
+                        )
+                        .build(),
+                )
         }
-        .build()
+    }
+    .build()

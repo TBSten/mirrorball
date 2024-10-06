@@ -6,273 +6,255 @@ fun inputElementOf(
     type: String?,
     kotlinName: String,
     elementAttrs: ElementAttrsBuilderScope.() -> Unit,
-) =
-    elementOf("input", kotlinName, hasContent = false) {
-        if (type != null) initialAttr("type", type)
-        else strAttr("type")
-        boolAttr("disabled")
-        strAttr("form")
-        strAttr("name")
-        strAttr("value")
-        elementAttrs()
+) = elementOf("input", kotlinName, hasContent = false) {
+    if (type != null) {
+        initialAttr("type", type)
+    } else {
+        strAttr("type")
     }
+    boolAttr("disabled")
+    strAttr("form")
+    strAttr("name")
+    strAttr("value")
+    elementAttrs()
+}
 
-val inputElements = listOf(
-    inputElementOf(null, "Input") { },
-    inputElementOf("button", "InputButton") {
-        autoCapitalizeAttr()
-        autoCompleteAttr()
-        strAttr("popovertarget", "popoverTarget")
-        strAttr("popovertargetaction", "popoverTargetAction")
-        boolAttr("readonly", "readOnly")
-
-    },
-    inputElementOf("checkbox", "InputCheckbox") {
-        autoCapitalizeAttr()
-        boolAttr("checked")
-        boolAttr("required")
-
-    },
-    inputElementOf("color", "InputColor") {
-        autoCapitalizeAttr()
-        autoCompleteAttr()
-        strAttr("list")
-    },
-    inputElementOf("date", "InputDate") {
-        autoCapitalizeAttr()
-        autoCompleteAttr()
-        strAttr("list")
-        numAttr("max")
-        numAttr("min")
-        boolAttr("readonly", "readOnly")
-        boolAttr("required")
-        numAttr("step")
-
-    },
-    inputElementOf("datetime-local", "InputDateTimeLocal") {
-        autoCapitalizeAttr()
-        autoCompleteAttr()
-        strAttr("list")
-        numAttr("max")
-        numAttr("min")
-        boolAttr("readonly", "readOnly")
-        boolAttr("required")
-        numAttr("step")
-
-    },
-    inputElementOf("email", "InputEmail") {
-        autoCompleteAttr()
-        strAttr("dirname", "dirName")
-        strAttr("list")
-        numAttr("maxlength", "maxLength")
-        numAttr("mienlngth", "minLength")
-        boolAttr("multiple")
-        strAttr("pattern")
-        strAttr("placeholder")
-        boolAttr("readonly", "readOnly")
-        boolAttr("required")
-        numAttr("size")
-
-    },
-    inputElementOf("file", "InputFile") {
-        strAttr("accept")
-        autoCapitalizeAttr()
-        autoCompleteAttr()
-        strAttr("capture")
-        strAttr("list")
-        boolAttr("multiple")
-        boolAttr("readonly", "readOnly")
-        boolAttr("required")
-
-    },
-    inputElementOf("hidden", "InputHidden") {
-        autoCapitalizeAttr()
-        autoCompleteAttr()
-        strAttr("dirname", "dirName")
-
-    },
-    inputElementOf("image", "InputImage") {
-        strAttr("alt")
-        autoCapitalizeAttr()
-        autoCompleteAttr()
-        strAttr("formaction", "formAction")
-        strAttr("formenctype", "formEncType")
-        enumAttr("formmethod", "formMethod") {
-            entry("get")
-            entry("post")
-            entry("dialog")
-        }
-        boolAttr("formnovalidate", "formNoValidate")
-        strAttr("formtarget", "formTarget")
-        enumAttr("formtarget", "formTarget") {
-            entry("_self", "Self")
-            entry("_blank", "Blank")
-            entry("_parent", "Parent")
-            entry("_top", "Top")
-        }
-        numAttr("height")
-        strAttr("list")
-        boolAttr("readonly", "readOnly")
-        boolAttr("required")
-        strAttr("src")
-        numAttr("width")
-
-    },
-    inputElementOf("month", "InputMonth") {
-        autoCapitalizeAttr()
-        autoCompleteAttr()
-        strAttr("list")
-        numAttr("max")
-        numAttr("min")
-        boolAttr("readonly", "readOnly")
-        boolAttr("required")
-        numAttr("step")
-
-    },
-    inputElementOf("number", "InputNumber") {
-        autoCapitalizeAttr()
-        autoCompleteAttr()
-        strAttr("list")
-        strAttr("placeholder")
-        boolAttr("readonly", "readOnly")
-        boolAttr("required")
-
-    },
-    inputElementOf("password", "InputPassword") {
-        autoCompleteAttr()
-        numAttr("maxlength", "maxLength")
-        numAttr("mienlngth", "minLength")
-        strAttr("pattern")
-        strAttr("placeholder")
-        boolAttr("readonly", "readOnly")
-        boolAttr("required")
-        numAttr("size")
-
-    },
-    inputElementOf("radio", "InputRadio") {
-        autoCapitalizeAttr()
-        boolAttr("checked")
-        boolAttr("required")
-
-    },
-    inputElementOf("range", "InputRange") {
-        autoCapitalizeAttr()
-        autoCompleteAttr()
-        strAttr("list")
-        numAttr("max")
-        numAttr("min")
-        numAttr("step")
-
-    },
-    inputElementOf("reset", "InputReset") {
-        autoCapitalizeAttr()
-        autoCompleteAttr()
-        strAttr("list")
-        boolAttr("readonly", "readOnly")
-        boolAttr("required")
-
-    },
-    inputElementOf("search", "InputSearch") {
-        autoCapitalizeAttr()
-        autoCompleteAttr()
-        strAttr("dirname", "dirName")
-        strAttr("list")
-        numAttr("maxlength", "maxLength")
-        numAttr("mienlngth", "minLength")
-        strAttr("pattern")
-        strAttr("placeholder")
-        boolAttr("readonly", "readOnly")
-        boolAttr("required")
-        numAttr("size")
-
-    },
-    inputElementOf("submit", "InputSubmit") {
-        autoCapitalizeAttr()
-        autoCompleteAttr()
-        strAttr("formaction", "formAction")
-        strAttr("formenctype", "formEncType")
-        enumAttr("formmethod", "formMethod") {
-            entry("get")
-            entry("post")
-            entry("dialog")
-        }
-        boolAttr("formnovalidate", "formNoValidate")
-        strAttr("formtarget", "formTarget")
-        enumAttr("formtarget", "formTarget") {
-            entry("_self", "Self")
-            entry("_blank", "Blank")
-            entry("_parent", "Parent")
-            entry("_top", "Top")
-        }
-        strAttr("list")
-        boolAttr("readonly", "readOnly")
-        boolAttr("required")
-
-    },
-    inputElementOf("tel", "InputTel") {
-        autoCapitalizeAttr()
-        autoCompleteAttr()
-        strAttr("dirname", "dirName")
-        strAttr("list")
-        numAttr("maxlength", "maxLength")
-        numAttr("mienlngth", "minLength")
-        strAttr("pattern")
-        strAttr("placeholder")
-        boolAttr("readonly", "readOnly")
-        boolAttr("required")
-        numAttr("size")
-
-    },
-    inputElementOf("text", "InputText") {
-        autoCapitalizeAttr()
-        autoCompleteAttr()
-        strAttr("dirname", "dirName")
-        strAttr("list")
-        numAttr("maxlength", "maxLength")
-        numAttr("mienlngth", "minLength")
-        strAttr("pattern")
-        strAttr("placeholder")
-        boolAttr("readonly", "readOnly")
-        boolAttr("required")
-        numAttr("size")
-
-    },
-    inputElementOf("time", "InputTime") {
-        autoCapitalizeAttr()
-        autoCompleteAttr()
-        strAttr("list")
-        numAttr("max")
-        numAttr("min")
-        boolAttr("readonly", "readOnly")
-        boolAttr("required")
-        numAttr("step")
-
-    },
-    inputElementOf("url", "InputUrl") {
-        autoCompleteAttr()
-        strAttr("dirname", "dirName")
-        strAttr("list")
-        numAttr("maxlength", "maxLength")
-        numAttr("mienlngth", "minLength")
-        strAttr("pattern")
-        strAttr("placeholder")
-        boolAttr("readonly", "readOnly")
-        boolAttr("required")
-        numAttr("size")
-
-    },
-    inputElementOf("week", "InputWeek") {
-        autoCapitalizeAttr()
-        autoCompleteAttr()
-        strAttr("list")
-        numAttr("max")
-        numAttr("min")
-        boolAttr("readonly", "readOnly")
-        boolAttr("required")
-        numAttr("step")
-
-    },
-)
+val inputElements =
+    listOf(
+        inputElementOf(null, "Input") { },
+        inputElementOf("button", "InputButton") {
+            autoCapitalizeAttr()
+            autoCompleteAttr()
+            strAttr("popovertarget", "popoverTarget")
+            strAttr("popovertargetaction", "popoverTargetAction")
+            boolAttr("readonly", "readOnly")
+        },
+        inputElementOf("checkbox", "InputCheckbox") {
+            autoCapitalizeAttr()
+            boolAttr("checked")
+            boolAttr("required")
+        },
+        inputElementOf("color", "InputColor") {
+            autoCapitalizeAttr()
+            autoCompleteAttr()
+            strAttr("list")
+        },
+        inputElementOf("date", "InputDate") {
+            autoCapitalizeAttr()
+            autoCompleteAttr()
+            strAttr("list")
+            numAttr("max")
+            numAttr("min")
+            boolAttr("readonly", "readOnly")
+            boolAttr("required")
+            numAttr("step")
+        },
+        inputElementOf("datetime-local", "InputDateTimeLocal") {
+            autoCapitalizeAttr()
+            autoCompleteAttr()
+            strAttr("list")
+            numAttr("max")
+            numAttr("min")
+            boolAttr("readonly", "readOnly")
+            boolAttr("required")
+            numAttr("step")
+        },
+        inputElementOf("email", "InputEmail") {
+            autoCompleteAttr()
+            strAttr("dirname", "dirName")
+            strAttr("list")
+            numAttr("maxlength", "maxLength")
+            numAttr("mienlngth", "minLength")
+            boolAttr("multiple")
+            strAttr("pattern")
+            strAttr("placeholder")
+            boolAttr("readonly", "readOnly")
+            boolAttr("required")
+            numAttr("size")
+        },
+        inputElementOf("file", "InputFile") {
+            strAttr("accept")
+            autoCapitalizeAttr()
+            autoCompleteAttr()
+            strAttr("capture")
+            strAttr("list")
+            boolAttr("multiple")
+            boolAttr("readonly", "readOnly")
+            boolAttr("required")
+        },
+        inputElementOf("hidden", "InputHidden") {
+            autoCapitalizeAttr()
+            autoCompleteAttr()
+            strAttr("dirname", "dirName")
+        },
+        inputElementOf("image", "InputImage") {
+            strAttr("alt")
+            autoCapitalizeAttr()
+            autoCompleteAttr()
+            strAttr("formaction", "formAction")
+            strAttr("formenctype", "formEncType")
+            enumAttr("formmethod", "formMethod") {
+                entry("get")
+                entry("post")
+                entry("dialog")
+            }
+            boolAttr("formnovalidate", "formNoValidate")
+            strAttr("formtarget", "formTarget")
+            enumAttr("formtarget", "formTarget") {
+                entry("_self", "Self")
+                entry("_blank", "Blank")
+                entry("_parent", "Parent")
+                entry("_top", "Top")
+            }
+            numAttr("height")
+            strAttr("list")
+            boolAttr("readonly", "readOnly")
+            boolAttr("required")
+            strAttr("src")
+            numAttr("width")
+        },
+        inputElementOf("month", "InputMonth") {
+            autoCapitalizeAttr()
+            autoCompleteAttr()
+            strAttr("list")
+            numAttr("max")
+            numAttr("min")
+            boolAttr("readonly", "readOnly")
+            boolAttr("required")
+            numAttr("step")
+        },
+        inputElementOf("number", "InputNumber") {
+            autoCapitalizeAttr()
+            autoCompleteAttr()
+            strAttr("list")
+            strAttr("placeholder")
+            boolAttr("readonly", "readOnly")
+            boolAttr("required")
+        },
+        inputElementOf("password", "InputPassword") {
+            autoCompleteAttr()
+            numAttr("maxlength", "maxLength")
+            numAttr("mienlngth", "minLength")
+            strAttr("pattern")
+            strAttr("placeholder")
+            boolAttr("readonly", "readOnly")
+            boolAttr("required")
+            numAttr("size")
+        },
+        inputElementOf("radio", "InputRadio") {
+            autoCapitalizeAttr()
+            boolAttr("checked")
+            boolAttr("required")
+        },
+        inputElementOf("range", "InputRange") {
+            autoCapitalizeAttr()
+            autoCompleteAttr()
+            strAttr("list")
+            numAttr("max")
+            numAttr("min")
+            numAttr("step")
+        },
+        inputElementOf("reset", "InputReset") {
+            autoCapitalizeAttr()
+            autoCompleteAttr()
+            strAttr("list")
+            boolAttr("readonly", "readOnly")
+            boolAttr("required")
+        },
+        inputElementOf("search", "InputSearch") {
+            autoCapitalizeAttr()
+            autoCompleteAttr()
+            strAttr("dirname", "dirName")
+            strAttr("list")
+            numAttr("maxlength", "maxLength")
+            numAttr("mienlngth", "minLength")
+            strAttr("pattern")
+            strAttr("placeholder")
+            boolAttr("readonly", "readOnly")
+            boolAttr("required")
+            numAttr("size")
+        },
+        inputElementOf("submit", "InputSubmit") {
+            autoCapitalizeAttr()
+            autoCompleteAttr()
+            strAttr("formaction", "formAction")
+            strAttr("formenctype", "formEncType")
+            enumAttr("formmethod", "formMethod") {
+                entry("get")
+                entry("post")
+                entry("dialog")
+            }
+            boolAttr("formnovalidate", "formNoValidate")
+            strAttr("formtarget", "formTarget")
+            enumAttr("formtarget", "formTarget") {
+                entry("_self", "Self")
+                entry("_blank", "Blank")
+                entry("_parent", "Parent")
+                entry("_top", "Top")
+            }
+            strAttr("list")
+            boolAttr("readonly", "readOnly")
+            boolAttr("required")
+        },
+        inputElementOf("tel", "InputTel") {
+            autoCapitalizeAttr()
+            autoCompleteAttr()
+            strAttr("dirname", "dirName")
+            strAttr("list")
+            numAttr("maxlength", "maxLength")
+            numAttr("mienlngth", "minLength")
+            strAttr("pattern")
+            strAttr("placeholder")
+            boolAttr("readonly", "readOnly")
+            boolAttr("required")
+            numAttr("size")
+        },
+        inputElementOf("text", "InputText") {
+            autoCapitalizeAttr()
+            autoCompleteAttr()
+            strAttr("dirname", "dirName")
+            strAttr("list")
+            numAttr("maxlength", "maxLength")
+            numAttr("mienlngth", "minLength")
+            strAttr("pattern")
+            strAttr("placeholder")
+            boolAttr("readonly", "readOnly")
+            boolAttr("required")
+            numAttr("size")
+        },
+        inputElementOf("time", "InputTime") {
+            autoCapitalizeAttr()
+            autoCompleteAttr()
+            strAttr("list")
+            numAttr("max")
+            numAttr("min")
+            boolAttr("readonly", "readOnly")
+            boolAttr("required")
+            numAttr("step")
+        },
+        inputElementOf("url", "InputUrl") {
+            autoCompleteAttr()
+            strAttr("dirname", "dirName")
+            strAttr("list")
+            numAttr("maxlength", "maxLength")
+            numAttr("mienlngth", "minLength")
+            strAttr("pattern")
+            strAttr("placeholder")
+            boolAttr("readonly", "readOnly")
+            boolAttr("required")
+            numAttr("size")
+        },
+        inputElementOf("week", "InputWeek") {
+            autoCapitalizeAttr()
+            autoCompleteAttr()
+            strAttr("list")
+            numAttr("max")
+            numAttr("min")
+            boolAttr("readonly", "readOnly")
+            boolAttr("required")
+            numAttr("step")
+        },
+    )
 
 private fun ElementAttrsBuilderScope.autoCapitalizeAttr() {
     enumAttr("autocapitalize", "autoCapitalize") {

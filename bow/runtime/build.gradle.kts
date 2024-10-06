@@ -25,5 +25,4 @@ kotlin {
             api(projects.ktor)
         }
     }
-
 }

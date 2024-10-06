@@ -15,11 +15,10 @@ import me.tbsten.compose.dom.generate.lowerCamelCase2UpperCamelCase
 import java.io.File
 import kotlin.reflect.KClass
 
-suspend fun generateGlobalAttrsFile(
-    generateDirectory: File,
-) {
-    val globalAttrsFile = File(generateDirectory, "attributes/GlobalAttrs.kt")
-        .also { it.parentFile.mkdirs() }
+suspend fun generateGlobalAttrsFile(generateDirectory: File) {
+    val globalAttrsFile =
+        File(generateDirectory, "attributes/GlobalAttrs.kt")
+            .also { it.parentFile.mkdirs() }
     println("globalAttrsFile: $globalAttrsFile (exists:${globalAttrsFile.exists()})")
     val globalAttrsFileSpec =
         autoGenerateFileSpecBuilder(AttributesPackageName, "GlobalAttrs")
@@ -39,10 +38,11 @@ suspend fun generateGlobalAttrsFile(
                         }
 
                         is EnumAttribute -> {
-                            val enumName = ClassName(
-                                AttributesPackageName,
-                                lowerCamelCase2UpperCamelCase(attr.kotlinName),
-                            )
+                            val enumName =
+                                ClassName(
+                                    AttributesPackageName,
+                                    lowerCamelCase2UpperCamelCase(attr.kotlinName),
+                                )
                             file.addFunction(
                                 FunSpec
                                     // fun ${composableName}AttrsScope.${attr.kotlinName}(arg)
@@ -52,12 +52,12 @@ suspend fun generateGlobalAttrsFile(
                                     // body
                                     .addStatement(
                                         """attr(%S, ${attr.kotlinName}.enumValue)""",
-                                        attr.htmlName
+                                        attr.htmlName,
                                     )
-                                    .build()
+                                    .build(),
                             )
                             file.addType(
-                                attrEnumTypeSpec(attr, enumName)
+                                attrEnumTypeSpec(attr, enumName),
                             )
                         }
                     }
@@ -71,11 +71,10 @@ suspend fun generateGlobalAttrsFile(
 private fun <T : Any> attrFunSpec(
     attr: Attribute,
     type: KClass<T>,
-) =
-    FunSpec
-        // fun AttrsScope.${attr.kotlinName}(arg)
-        .builder(attr.kotlinName)
-        .receiver(AttrsScope::class)
-        .addParameter(attr.kotlinName, type)
-        // body
-        .addStatement("""attr(%S, ${attr.kotlinName})""", attr.htmlName)
+) = FunSpec
+    // fun AttrsScope.${attr.kotlinName}(arg)
+    .builder(attr.kotlinName)
+    .receiver(AttrsScope::class)
+    .addParameter(attr.kotlinName, type)
+    // body
+    .addStatement("""attr(%S, ${attr.kotlinName})""", attr.htmlName)

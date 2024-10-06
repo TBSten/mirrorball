@@ -17,11 +17,12 @@ class StyleRegister(
 
 fun AttrsScope.style(
     styles: StyleRegister,
-    builder: CssBuilder.() -> Unit
+    builder: CssBuilder.() -> Unit,
 ) {
-    val appliedBuilder = CssBuilder().apply {
-        builder()
-    }
+    val appliedBuilder =
+        CssBuilder().apply {
+            builder()
+        }
     val className = "mirrorball-${appliedBuilder.hashCode()}"
 
     // TODO 毎回追加しないように制御する

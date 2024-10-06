@@ -10,9 +10,8 @@ internal fun TaskContainer.registerBowTask(
     name: String,
     description: String,
     configurationAction: Action<in Task>,
-) =
-    register(name) {
-        it.group = GroupId
-        it.description = description
-        configurationAction.execute(it)
-    }
+) = register(name) {
+    it.group = GroupId
+    it.description = description
+    configurationAction.execute(it)
+}

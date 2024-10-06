@@ -1,6 +1,5 @@
 package me.tbsten.compose.dom.bow.server.util
 
-
 fun <T : Any> T?.requireNotNull(): T {
     return requireNotNull(this)
 }

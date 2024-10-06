@@ -17,28 +17,34 @@ class MirrorballSlotImplementationProcessor(
      * SlotとSlotContentのペア一覧のmapを生成する。
      */
     private var processed = false
+
     override fun process(resolver: Resolver): List<KSAnnotated> {
-        if (processed) return emptyList()
-        else processed = true
+        if (processed) {
+            return emptyList()
+        } else {
+            processed = true
+        }
 
         val slotImplAnnotationName =
             requireNotNull(MirrorballSlotImplementation::class.qualifiedName)
-        val slotImplFunctions = resolver.getSymbolsWithAnnotation(slotImplAnnotationName)
-            .filterIsInstance<KSFunctionDeclaration>()
+        val slotImplFunctions =
+            resolver.getSymbolsWithAnnotation(slotImplAnnotationName)
+                .filterIsInstance<KSFunctionDeclaration>()
 
-        val slotImplPairs = buildMap<KSType, KSFunctionDeclaration> {
-            slotImplFunctions.forEach { impl ->
-                val slotImplAnnotationArguments =
-                    impl.annotations.find {
-                        it.annotationType.resolve().declaration.qualifiedName?.asString() == slotImplAnnotationName
-                    }?.arguments
-                val slotClass =
-                    slotImplAnnotationArguments
-                        ?.find { it.name?.asString() == "slot" }
-                        ?.value as KSType
-                put(slotClass, impl)
+        val slotImplPairs =
+            buildMap<KSType, KSFunctionDeclaration> {
+                slotImplFunctions.forEach { impl ->
+                    val slotImplAnnotationArguments =
+                        impl.annotations.find {
+                            it.annotationType.resolve().declaration.qualifiedName?.asString() == slotImplAnnotationName
+                        }?.arguments
+                    val slotClass =
+                        slotImplAnnotationArguments
+                            ?.find { it.name?.asString() == "slot" }
+                            ?.value as KSType
+                    put(slotClass, impl)
+                }
             }
-        }
 
         val packageName = "me.tbsten.compose.dom.bow.generated"
         codeGenerator.createNewFile(

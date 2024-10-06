@@ -41,8 +41,9 @@ class BowClientPageListProcessor(
 //                writer.writeBowClientModules(clientPageModules)
 //            }
 //        }
-        val buildOutputDir = options.get("bowInternal.buildOutputDir")
-            .requireNotNull { "Not Configured `bowInternal.buildOutputDir`" }
+        val buildOutputDir =
+            options.get("bowInternal.buildOutputDir")
+                .requireNotNull { "Not Configured `bowInternal.buildOutputDir`" }
         codeGenerator.createNewFile(
             Dependencies.ALL_FILES,
             packageName = "me.tbsten.compose.dom.bow.server.generated",

@@ -14,44 +14,48 @@ import me.tbsten.compose.dom.generate.ElementsPackageName
 import me.tbsten.compose.dom.generate.LibraryPackageName
 import me.tbsten.compose.dom.generate.autoGenerateFileSpecBuilder
 
-fun elementComposableFile(composableName: String, htmlName: String) =
-    autoGenerateFileSpecBuilder(ElementsPackageName, composableName)
-        .addFunction(htmlTagComposableFunSpec(composableName, htmlName))
+fun elementComposableFile(
+    composableName: String,
+    htmlName: String,
+) = autoGenerateFileSpecBuilder(ElementsPackageName, composableName)
+    .addFunction(htmlTagComposableFunSpec(composableName, htmlName))
 
-private fun htmlTagComposableFunSpec(composableName: String, htmlName: String) =
-    FunSpec.builder(composableName)
-        .addAnnotation(Composable::class)
-        .addParameters(argumentsSpecs(composableName))
-        .addStatement(
-            "val attrsScope = %T(ref = ref).apply { attrs() }",
-            ClassName(ElementsPackageName, "${composableName}AttrsScope"),
-        )
-        .addCode(
-            buildCodeBlock {
-                addStatement(
-                    "val tagContent :  @%T() (%T.() -> Unit) = {",
-                    Composable::class,
-                    ClassName("me.tbsten.compose.dom", "HtmlTagContentScope"),
-                )
-                addStatement("val scope = ${composableName}ContentScope(ref)")
-                addStatement("scope.content()")
-                addStatement("}")
-            },
-        )
-        .addStatement(
-            "%T(" +
-                    "localName = %S, " +
-                    "attrs = { applyScope(attrsScope) }, " +
-                    "ref = ref, " +
-                    "content = tagContent," +
-                    ")",
-            ClassName(
-                LibraryPackageName,
-                "HtmlTag"
-            ), // Composable関数を自動生成ファイルで参照できないためClassNameで指定している
-            htmlName,
-        )
-        .build()
+private fun htmlTagComposableFunSpec(
+    composableName: String,
+    htmlName: String,
+) = FunSpec.builder(composableName)
+    .addAnnotation(Composable::class)
+    .addParameters(argumentsSpecs(composableName))
+    .addStatement(
+        "val attrsScope = %T(ref = ref).apply { attrs() }",
+        ClassName(ElementsPackageName, "${composableName}AttrsScope"),
+    )
+    .addCode(
+        buildCodeBlock {
+            addStatement(
+                "val tagContent :  @%T() (%T.() -> Unit) = {",
+                Composable::class,
+                ClassName("me.tbsten.compose.dom", "HtmlTagContentScope"),
+            )
+            addStatement("val scope = ${composableName}ContentScope(ref)")
+            addStatement("scope.content()")
+            addStatement("}")
+        },
+    )
+    .addStatement(
+        "%T(" +
+            "localName = %S, " +
+            "attrs = { applyScope(attrsScope) }, " +
+            "ref = ref, " +
+            "content = tagContent," +
+            ")",
+        ClassName(
+            LibraryPackageName,
+            "HtmlTag",
+        ), // Composable関数を自動生成ファイルで参照できないためClassNameで指定している
+        htmlName,
+    )
+    .build()
 
 private fun argumentsSpecs(composableName: String) =
     listOf(
@@ -72,7 +76,7 @@ private fun argumentsSpecs(composableName: String) =
                 CodeBlock.of(
                     "%T()",
                     ClassName(LibraryPackageName, "rememberDefaultHtmlTagRef"),
-                )
+                ),
             )
             .build(),
         ParameterSpec.builder(

@@ -23,27 +23,30 @@ fun Project.registerBuildTask(
         clientProjects.forEach {
             it.kotlin { configureBowJsTarget() }
         }
-        val clientBuildTasks = clientProjects
-            .map { clientProject ->
-                clientProject.tasks.getByName(bowConfiguration.jsBuildTask).apply {
-                    doLast {
-                        copyClientBuiltOutputs(buildOutputDir, bowConfiguration, clientProject)
+        val clientBuildTasks =
+            clientProjects
+                .map { clientProject ->
+                    clientProject.tasks.getByName(bowConfiguration.jsBuildTask).apply {
+                        doLast {
+                            copyClientBuiltOutputs(buildOutputDir, bowConfiguration, clientProject)
+                        }
                     }
-                }
-            }.toTypedArray()
+                }.toTypedArray()
 
-        val serverProject = bowExtension.entryProjects.serverProject
-            .requireNotNull { "Not Configured `bow.entryProjects.server`." }
-        val serverBuildTask = bowConfiguration.jvmBuildTask?.let { jvmBuildTask ->
-            serverProject.tasks.getByName(jvmBuildTask)
-                .doLast {
-                    copyServerBuildOutputs(buildOutputDir, bowConfiguration, serverProject)
-                }
-        }
+        val serverProject =
+            bowExtension.entryProjects.serverProject
+                .requireNotNull { "Not Configured `bow.entryProjects.server`." }
+        val serverBuildTask =
+            bowConfiguration.jvmBuildTask?.let { jvmBuildTask ->
+                serverProject.tasks.getByName(jvmBuildTask)
+                    .doLast {
+                        copyServerBuildOutputs(buildOutputDir, bowConfiguration, serverProject)
+                    }
+            }
         serverProject.ksp {
             arg(
                 "bowInternal.buildOutputDir",
-                buildOutputDir.map { it.dir("static") }.get().asFile.absolutePath
+                buildOutputDir.map { it.dir("static") }.get().asFile.absolutePath,
             )
         }
 
@@ -53,7 +56,7 @@ fun Project.registerBuildTask(
         )
         serverBuildTask?.let {
             buildTask.dependsOn(
-                serverBuildTask.apply { dependsOn(*clientBuildTasks) }
+                serverBuildTask.apply { dependsOn(*clientBuildTasks) },
             )
         }
     }
@@ -61,9 +64,7 @@ fun Project.registerBuildTask(
     configureCleanTask(buildOutputDir)
 }
 
-private fun Project.configureCleanTask(
-    buildOutputDir: Provider<Directory>,
-) {
+private fun Project.configureCleanTask(buildOutputDir: Provider<Directory>) {
     fun Task.clean() {
         doLast {
             delete(buildOutputDir)
@@ -96,10 +97,11 @@ private fun copyClientBuiltOutputs(
     bowConfiguration: BowConfiguration,
     clientProject: BowPluginEntryProjects.ClientPageProject,
 ) {
-    val clientProjectBuildOutputDir = clientProject.layout
-        .buildDirectory
-        .file(bowConfiguration.jsBuildOutputDir)
-        .get().asFile
+    val clientProjectBuildOutputDir =
+        clientProject.layout
+            .buildDirectory
+            .file(bowConfiguration.jsBuildOutputDir)
+            .get().asFile
 
     clientProjectBuildOutputDir.copyRecursively(
         File(
@@ -116,10 +118,11 @@ private fun copyServerBuildOutputs(
     serverProject: BowPluginEntryProjects.ServerProject,
 ) {
     val jvmBuildOutputDir = bowConfiguration.jvmBuildOutputDir ?: return
-    val serverProjectBuildOutputDir = serverProject.layout
-        .buildDirectory
-        .file(jvmBuildOutputDir)
-        .get().asFile
+    val serverProjectBuildOutputDir =
+        serverProject.layout
+            .buildDirectory
+            .file(jvmBuildOutputDir)
+            .get().asFile
 
     serverProjectBuildOutputDir.copyRecursively(
         buildOutputDir.map { it.dir("server") }.get().asFile,

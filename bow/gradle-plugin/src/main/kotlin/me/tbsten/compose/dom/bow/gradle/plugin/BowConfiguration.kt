@@ -11,23 +11,28 @@ class BowConfiguration(
     val jvmRunTask: JvmRunTask,
 ) {
     companion object {
-        val Dev = BowConfiguration(
-            confName = "dev",
+        val Dev =
+            BowConfiguration(
+                confName = "dev",
 //            jsBuildTask = "jsBrowserDevelopmentExecutableDistribution",
-            jsBuildTask = "jsBrowserDistribution", // must be `jsBrowserDevelopmentExecutableDistribution` but its outputs are very big.
-            jsBuildOutputDir = "dist/js/productionExecutable", // must be `dist/js/developmentExecutable` but jsBuildTask is outputs are very big.
-            jvmBuildTask = null,
-            jvmBuildOutputDir = null,
-            jvmRunTask = JvmRunTask.RunTask("run"),
-        )
-        val Prod = BowConfiguration(
-            confName = "prod",
-            jsBuildTask = "jsBrowserDistribution",
-            jsBuildOutputDir = "dist/js/productionExecutable",
-            jvmBuildTask = "buildFatJar",
-            jvmBuildOutputDir = "libs",
-            jvmRunTask = JvmRunTask.Error("Can not run production. Please run `./gradlew bowBuildProd` and `java -jar build/libs/mirrorball-bow-server-output.jar`."),
-        )
+                jsBuildTask = "jsBrowserDistribution", // must be `jsBrowserDevelopmentExecutableDistribution` but its outputs are very big.
+                jsBuildOutputDir = "dist/js/productionExecutable", // must be `dist/js/developmentExecutable` but jsBuildTask is outputs are very big.
+                jvmBuildTask = null,
+                jvmBuildOutputDir = null,
+                jvmRunTask = JvmRunTask.RunTask("run"),
+            )
+        val Prod =
+            BowConfiguration(
+                confName = "prod",
+                jsBuildTask = "jsBrowserDistribution",
+                jsBuildOutputDir = "dist/js/productionExecutable",
+                jvmBuildTask = "buildFatJar",
+                jvmBuildOutputDir = "libs",
+                jvmRunTask =
+                    JvmRunTask.Error(
+                        "Can not run production. Please run `./gradlew bowBuildProd` and `java -jar build/libs/mirrorball-bow-server-output.jar`.",
+                    ),
+            )
     }
 
     val capitalizedConfName =
@@ -36,5 +41,6 @@ class BowConfiguration(
 
 sealed interface JvmRunTask {
     class RunTask(val taskName: String) : JvmRunTask
+
     class Error(val message: String) : JvmRunTask
 }

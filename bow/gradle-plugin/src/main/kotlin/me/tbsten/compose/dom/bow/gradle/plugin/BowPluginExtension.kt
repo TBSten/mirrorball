@@ -3,7 +3,6 @@ package me.tbsten.compose.dom.bow.gradle.plugin
 import org.gradle.api.Project
 import org.gradle.api.artifacts.ProjectDependency
 
-
 open class BowPluginExtension {
     internal lateinit var appliedProject: Project
     val entryProjects = BowPluginEntryProjects()
@@ -21,13 +20,19 @@ class BowPluginEntryProjects {
     internal var serverProject: ServerProject? = null
 
     @Suppress("unused", "MemberVisibilityCanBePrivate")
-    fun clientPage(project: Project, modulePath: String) {
+    fun clientPage(
+        project: Project,
+        modulePath: String,
+    ) {
         if (clientPageProjects[modulePath] != null) throw IllegalArgumentException("$modulePath (clientPage project) is already registered")
         clientPageProjects[modulePath] = ClientPageProject(project, modulePath)
     }
 
     @Suppress("unused", "MemberVisibilityCanBePrivate")
-    fun clientPage(project: ProjectDependency, modulePath: String) {
+    fun clientPage(
+        project: ProjectDependency,
+        modulePath: String,
+    ) {
         clientPage(project.dependencyProject, modulePath)
     }
 

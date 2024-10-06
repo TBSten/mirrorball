@@ -25,8 +25,9 @@ import javax.xml.transform.stream.StreamResult
 suspend fun ApplicationCall.respondComposable(
     styleSheet: JvmMirrorballStyleSheet,
     contentType: ContentType = ContentType.Text.Html,
-    document: Document = DocumentBuilderFactory.newInstance().newDocumentBuilder()
-        .newDocument(),
+    document: Document =
+        DocumentBuilderFactory.newInstance().newDocumentBuilder()
+            .newDocument(),
     content: @Composable () -> Unit,
 ) {
     respondOutputStream(contentType) {
@@ -47,9 +48,7 @@ fun Document.pipeTo(outputStream: OutputStream) {
 }
 
 @Suppress("unused")
-suspend fun ApplicationCall.respondStyleSheet(
-    styleSheet: JvmMirrorballStyleSheet,
-) {
+suspend fun ApplicationCall.respondStyleSheet(styleSheet: JvmMirrorballStyleSheet) {
     respondText(styleSheet.toString(), ContentType.Text.CSS)
 }
 
@@ -60,8 +59,11 @@ fun Routing.composable(
     content: suspend MirrorballKtorComposableContentScope.() -> Unit,
 ) {
     val styleSheetPath =
-        if (path.endsWith("/")) "$path/$styleSheetFileName"
-        else "$path/$styleSheetFileName"
+        if (path.endsWith("/")) {
+            "$path/$styleSheetFileName"
+        } else {
+            "$path/$styleSheetFileName"
+        }
 
     get(path) {
         val scope = MirrorballKtorComposableContentScope(this)
@@ -89,9 +91,7 @@ class MirrorballKtorComposableContentScope(
     @Suppress("PropertyName")
     internal var _content: @Composable (linkStyleSheet: @Composable () -> Unit) -> Unit = {}
 
-    fun content(
-        content: @Composable (linkStyleSheet: @Composable () -> Unit) -> Unit
-    ) {
+    fun content(content: @Composable (linkStyleSheet: @Composable () -> Unit) -> Unit) {
         this._content = content
     }
 }

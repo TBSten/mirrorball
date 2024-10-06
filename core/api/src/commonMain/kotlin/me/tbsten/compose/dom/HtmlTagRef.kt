@@ -2,7 +2,6 @@ package me.tbsten.compose.dom
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
-import kotlin.reflect.KClass
 
 class HtmlTagRef {
     private var currentOrNull: Any? = null
@@ -13,9 +12,10 @@ class HtmlTagRef {
     }
 
     val current
-        get() = requireNotNull(currentOrNull) {
-            "can not access element before init ref. Did you forget to pass the ref ?"
-        }
+        get() =
+            requireNotNull(currentOrNull) {
+                "can not access element before init ref. Did you forget to pass the ref ?"
+            }
 }
 
 @Composable

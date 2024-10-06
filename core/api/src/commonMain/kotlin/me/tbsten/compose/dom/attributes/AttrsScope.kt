@@ -10,7 +10,11 @@ open class AttrsScope(
 
     @PublishedApi
     internal val updaters = mutableListOf<(ref: HtmlTagRef) -> Unit>()
-    fun attr(name: String, value: String) {
+
+    fun attr(
+        name: String,
+        value: String,
+    ) {
         attrsMap[name] = value
     }
 

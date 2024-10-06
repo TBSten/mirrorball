@@ -7,23 +7,25 @@ import me.tbsten.compose.dom.generate.attributes.generateGlobalAttrsFile
 import me.tbsten.compose.dom.generate.elements.generateElementsFiles
 import java.io.File
 
-suspend fun main(args: Array<String>) = coroutineScope {
+suspend fun main(args: Array<String>) =
+    coroutineScope {
 //    val generateDirectory = File(args[0])
-    val generateDirectory = File(args[0])
-        .also { it.cleanAndMkdir() }
+        val generateDirectory =
+            File(args[0])
+                .also { it.cleanAndMkdir() }
 
-    println("$generateDirectory (${generateDirectory.exists()})")
-    println("Generate to $generateDirectory")
+        println("$generateDirectory (${generateDirectory.exists()})")
+        println("Generate to $generateDirectory")
 
-    listOf(
-        launch {
-            generateElementsFiles(generateDirectory)
-        },
-        launch {
-            generateGlobalAttrsFile(generateDirectory)
-        },
-    ).joinAll()
-}
+        listOf(
+            launch {
+                generateElementsFiles(generateDirectory)
+            },
+            launch {
+                generateGlobalAttrsFile(generateDirectory)
+            },
+        ).joinAll()
+    }
 
 /*
 TODO
@@ -145,4 +147,3 @@ fun AttrsScope.role(role: String) =
 ...
 
  */
-
