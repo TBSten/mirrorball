@@ -4,16 +4,11 @@ plugins {
     alias(libs.plugins.compose.compiler)
     alias(libs.plugins.ksp)
     alias(libs.plugins.kotlinx.serialization)
-//    id("me.tbsten.compose.dom.bow.client.page") version "0.0.1"
 }
 
 kotlin {
     js {
-//        moduleName = "top"
         browser {
-//            commonWebpackConfig {
-//                outputFileName = "top.js"
-//            }
         }
         binaries.executable()
     }
@@ -30,11 +25,4 @@ kotlin {
             implementation(libs.kotlin.wrappers.css)
         }
     }
-    dependencies {
-        ksp(projects.bow.kspPluginClient)
-    }
 }
-
-//bowClientPage {
-//    module = "/top"
-//}

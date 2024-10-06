@@ -17,14 +17,6 @@ application {
     )
 }
 
-// TODO move to plugin
-// refs: https://youtrack.jetbrains.com/issue/KTOR-7522/Is-there-an-artifact-for-build-logic-module-in-ktor-gradle-plugin
-//ktor {
-//    fatJar {
-//        archiveFileName = "mirrorball-bow-server-output.jar"
-//    }
-//}
-
 dependencies {
     implementation(libs.logback)
     implementation(libs.ktor.server.core)
@@ -40,19 +32,5 @@ dependencies {
     implementation(projects.ktor)
 
     implementation(projects.bow.runtime)
-    ksp(projects.bow.kspPluginClient)
     ksp(projects.bow.kspPluginServer)
 }
-
-//ksp {
-//    val clientPageModules =
-//        projects
-//            .demo.bow.dependencyProject.layout
-//            .buildDirectory
-//            .file("bow/clientPageModules.json")
-//            .get().asFile.absolutePath
-//    arg(
-//        "bow.clientPageModules",
-//        clientPageModules,
-//    )
-//}

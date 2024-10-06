@@ -4,7 +4,6 @@ plugins {
     alias(libs.plugins.compose.compiler)
     alias(libs.plugins.ksp)
     alias(libs.plugins.kotlinx.serialization)
-//    id("me.tbsten.compose.dom.bow.client.page") version "0.0.1"
 }
 
 kotlin {
@@ -20,7 +19,7 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             implementation(projects.demo.bow.shared)
-            implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.7.1")
+            implementation(libs.kotlinx.serialization)
         }
         jsMain.dependencies {
             implementation(compose.runtime)
@@ -29,12 +28,4 @@ kotlin {
             implementation(libs.kotlin.wrappers.css)
         }
     }
-
-    dependencies {
-        ksp(projects.bow.kspPluginClient)
-    }
 }
-
-//bowClientPage {
-//    module = "/"
-//}
