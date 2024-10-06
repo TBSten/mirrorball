@@ -8,6 +8,7 @@
 package me.tbsten.compose.dom.elements
 
 import androidx.compose.runtime.Composable
+import kotlin.String
 import kotlin.Suppress
 import kotlin.Unit
 import me.tbsten.compose.dom.HtmlTag
@@ -19,6 +20,7 @@ import me.tbsten.compose.dom.rememberDefaultHtmlTagRef
 public fun Td(
   attrs: TdAttrsScope.() -> Unit = { },
   ref: HtmlTagRef = rememberDefaultHtmlTagRef(),
+  dangerouslySetInnerHTML: String? = null,
   content: @Composable TdContentScope.() -> Unit = { },
 ) {
   val attrsScope = TdAttrsScope(ref = ref).apply { attrs() }
@@ -26,5 +28,6 @@ public fun Td(
   val scope = TdContentScope(ref)
   scope.content()
   }
-  HtmlTag(localName = "td", attrs = { applyScope(attrsScope) }, ref = ref, content = tagContent,)
+  HtmlTag(localName = "td", attrs = { applyScope(attrsScope) }, ref = ref, content =
+      tagContent,dangerouslySetInnerHTML = dangerouslySetInnerHTML,)
 }

@@ -8,6 +8,7 @@
 package me.tbsten.compose.dom.elements
 
 import androidx.compose.runtime.Composable
+import kotlin.String
 import kotlin.Suppress
 import kotlin.Unit
 import me.tbsten.compose.dom.HtmlTag
@@ -19,6 +20,7 @@ import me.tbsten.compose.dom.rememberDefaultHtmlTagRef
 public fun Address(
   attrs: AddressAttrsScope.() -> Unit = { },
   ref: HtmlTagRef = rememberDefaultHtmlTagRef(),
+  dangerouslySetInnerHTML: String? = null,
   content: @Composable AddressContentScope.() -> Unit = { },
 ) {
   val attrsScope = AddressAttrsScope(ref = ref).apply { attrs() }
@@ -27,5 +29,5 @@ public fun Address(
   scope.content()
   }
   HtmlTag(localName = "address", attrs = { applyScope(attrsScope) }, ref = ref, content =
-      tagContent,)
+      tagContent,dangerouslySetInnerHTML = dangerouslySetInnerHTML,)
 }

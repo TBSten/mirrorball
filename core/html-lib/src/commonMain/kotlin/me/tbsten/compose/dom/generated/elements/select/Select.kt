@@ -8,6 +8,7 @@
 package me.tbsten.compose.dom.elements
 
 import androidx.compose.runtime.Composable
+import kotlin.String
 import kotlin.Suppress
 import kotlin.Unit
 import me.tbsten.compose.dom.HtmlTag
@@ -19,6 +20,7 @@ import me.tbsten.compose.dom.rememberDefaultHtmlTagRef
 public fun Select(
   attrs: SelectAttrsScope.() -> Unit = { },
   ref: HtmlTagRef = rememberDefaultHtmlTagRef(),
+  dangerouslySetInnerHTML: String? = null,
   content: @Composable SelectContentScope.() -> Unit = { },
 ) {
   val attrsScope = SelectAttrsScope(ref = ref).apply { attrs() }
@@ -27,5 +29,5 @@ public fun Select(
   scope.content()
   }
   HtmlTag(localName = "select", attrs = { applyScope(attrsScope) }, ref = ref, content =
-      tagContent,)
+      tagContent,dangerouslySetInnerHTML = dangerouslySetInnerHTML,)
 }

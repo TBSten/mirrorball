@@ -8,6 +8,7 @@
 package me.tbsten.compose.dom.elements
 
 import androidx.compose.runtime.Composable
+import kotlin.String
 import kotlin.Suppress
 import kotlin.Unit
 import me.tbsten.compose.dom.HtmlTag
@@ -19,6 +20,7 @@ import me.tbsten.compose.dom.rememberDefaultHtmlTagRef
 public fun Dfn(
   attrs: DfnAttrsScope.() -> Unit = { },
   ref: HtmlTagRef = rememberDefaultHtmlTagRef(),
+  dangerouslySetInnerHTML: String? = null,
   content: @Composable DfnContentScope.() -> Unit = { },
 ) {
   val attrsScope = DfnAttrsScope(ref = ref).apply { attrs() }
@@ -26,5 +28,6 @@ public fun Dfn(
   val scope = DfnContentScope(ref)
   scope.content()
   }
-  HtmlTag(localName = "dfn", attrs = { applyScope(attrsScope) }, ref = ref, content = tagContent,)
+  HtmlTag(localName = "dfn", attrs = { applyScope(attrsScope) }, ref = ref, content =
+      tagContent,dangerouslySetInnerHTML = dangerouslySetInnerHTML,)
 }

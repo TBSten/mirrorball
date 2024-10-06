@@ -13,6 +13,7 @@ actual fun HtmlTag(
     localName: String,
     attrs: AttrsScope.() -> Unit,
     ref: HtmlTagRef,
+    dangerouslySetInnerHTML: String?,
     content: @Composable HtmlTagContentScope.() -> Unit,
 ) {
     val attrsScope = AttrsScope(ref = ref)
@@ -35,6 +36,11 @@ actual fun HtmlTag(
             attrsScope.updaters.forEach { updater ->
                 reconcile {
                     updater(ref)
+                }
+            }
+            if (dangerouslySetInnerHTML != null) {
+                set(dangerouslySetInnerHTML) {
+                    this.innerHTML = dangerouslySetInnerHTML
                 }
             }
         },

@@ -8,6 +8,7 @@
 package me.tbsten.compose.dom.elements
 
 import androidx.compose.runtime.Composable
+import kotlin.String
 import kotlin.Suppress
 import kotlin.Unit
 import me.tbsten.compose.dom.HtmlTag
@@ -19,6 +20,7 @@ import me.tbsten.compose.dom.rememberDefaultHtmlTagRef
 public fun InputCheckbox(
   attrs: InputCheckboxAttrsScope.() -> Unit = { },
   ref: HtmlTagRef = rememberDefaultHtmlTagRef(),
+  dangerouslySetInnerHTML: String? = null,
   content: @Composable InputCheckboxContentScope.() -> Unit = { },
 ) {
   val attrsScope = InputCheckboxAttrsScope(ref = ref).apply { attrs() }
@@ -26,5 +28,6 @@ public fun InputCheckbox(
   val scope = InputCheckboxContentScope(ref)
   scope.content()
   }
-  HtmlTag(localName = "input", attrs = { applyScope(attrsScope) }, ref = ref, content = tagContent,)
+  HtmlTag(localName = "input", attrs = { applyScope(attrsScope) }, ref = ref, content =
+      tagContent,dangerouslySetInnerHTML = dangerouslySetInnerHTML,)
 }

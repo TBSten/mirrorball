@@ -8,6 +8,7 @@
 package me.tbsten.compose.dom.elements
 
 import androidx.compose.runtime.Composable
+import kotlin.String
 import kotlin.Suppress
 import kotlin.Unit
 import me.tbsten.compose.dom.HtmlTag
@@ -19,6 +20,7 @@ import me.tbsten.compose.dom.rememberDefaultHtmlTagRef
 public fun Br(
   attrs: BrAttrsScope.() -> Unit = { },
   ref: HtmlTagRef = rememberDefaultHtmlTagRef(),
+  dangerouslySetInnerHTML: String? = null,
   content: @Composable BrContentScope.() -> Unit = { },
 ) {
   val attrsScope = BrAttrsScope(ref = ref).apply { attrs() }
@@ -26,5 +28,6 @@ public fun Br(
   val scope = BrContentScope(ref)
   scope.content()
   }
-  HtmlTag(localName = "br", attrs = { applyScope(attrsScope) }, ref = ref, content = tagContent,)
+  HtmlTag(localName = "br", attrs = { applyScope(attrsScope) }, ref = ref, content =
+      tagContent,dangerouslySetInnerHTML = dangerouslySetInnerHTML,)
 }

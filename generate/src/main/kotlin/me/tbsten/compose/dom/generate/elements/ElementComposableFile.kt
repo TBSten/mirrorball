@@ -7,6 +7,7 @@ import com.squareup.kotlinpoet.CodeBlock
 import com.squareup.kotlinpoet.FunSpec
 import com.squareup.kotlinpoet.LambdaTypeName
 import com.squareup.kotlinpoet.ParameterSpec
+import com.squareup.kotlinpoet.asClassName
 import com.squareup.kotlinpoet.buildCodeBlock
 import com.squareup.kotlinpoet.typeNameOf
 import me.tbsten.compose.dom.HtmlTagRef
@@ -48,6 +49,7 @@ private fun htmlTagComposableFunSpec(
             "attrs = { applyScope(attrsScope) }, " +
             "ref = ref, " +
             "content = tagContent," +
+            "dangerouslySetInnerHTML = dangerouslySetInnerHTML," +
             ")",
         ClassName(
             LibraryPackageName,
@@ -78,6 +80,12 @@ private fun argumentsSpecs(composableName: String) =
                     ClassName(LibraryPackageName, "rememberDefaultHtmlTagRef"),
                 ),
             )
+            .build(),
+        ParameterSpec.builder(
+            "dangerouslySetInnerHTML",
+            String::class.asClassName().copy(nullable = true),
+        )
+            .defaultValue(CodeBlock.of("null"))
             .build(),
         ParameterSpec.builder(
             "content",

@@ -8,6 +8,7 @@ expect fun HtmlTag(
     localName: String,
     attrs: AttrsScope.() -> Unit = { },
     ref: HtmlTagRef = rememberDefaultHtmlTagRef(),
+    dangerouslySetInnerHTML: String? = null,
     content: @Composable HtmlTagContentScope.() -> Unit = {},
 )
 
