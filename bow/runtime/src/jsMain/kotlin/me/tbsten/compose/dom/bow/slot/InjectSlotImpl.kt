@@ -1,4 +1,4 @@
-package me.tbsten.compose.dom.bow
+package me.tbsten.compose.dom.bow.slot
 
 import androidx.compose.runtime.Composable
 import kotlinx.browser.document

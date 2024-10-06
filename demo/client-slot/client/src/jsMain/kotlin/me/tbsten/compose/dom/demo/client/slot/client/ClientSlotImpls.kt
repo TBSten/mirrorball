@@ -1,7 +1,7 @@
 package me.tbsten.compose.dom.demo.client.slot.client
 
 import androidx.compose.runtime.Composable
-import me.tbsten.compose.dom.bow.MirrorballSlotImplementation
+import me.tbsten.compose.dom.bow.slot.MirrorballSlotImplementation
 import me.tbsten.compose.dom.demo.client.slot.shared.BasicSlot
 import me.tbsten.compose.dom.demo.client.slot.shared.SlotWithArgs
 import me.tbsten.compose.dom.elements.Div

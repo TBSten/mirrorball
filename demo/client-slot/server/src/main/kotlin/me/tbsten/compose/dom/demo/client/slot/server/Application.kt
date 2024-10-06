@@ -7,8 +7,8 @@ import io.ktor.server.netty.Netty
 import io.ktor.server.routing.Routing
 import io.ktor.server.routing.getAllRoutes
 import io.ktor.server.routing.routing
-import me.tbsten.compose.dom.bow.ClientSlot
 import me.tbsten.compose.dom.bow.server.generated.BowBuildOutputDir
+import me.tbsten.compose.dom.bow.slot.ClientSlot
 import me.tbsten.compose.dom.demo.client.slot.shared.BasicSlot
 import me.tbsten.compose.dom.demo.client.slot.shared.SlotWithArgs
 import me.tbsten.compose.dom.elements.Body

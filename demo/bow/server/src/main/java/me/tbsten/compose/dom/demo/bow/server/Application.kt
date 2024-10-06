@@ -11,10 +11,10 @@ import io.ktor.server.routing.Routing
 import io.ktor.server.routing.getAllRoutes
 import io.ktor.server.routing.routing
 import me.tbsten.compose.dom.attributes.id
-import me.tbsten.compose.dom.bow.MirrorballSlotImplementation
-import me.tbsten.compose.dom.bow.Slot
 import me.tbsten.compose.dom.bow.SlotContent
 import me.tbsten.compose.dom.bow.server.generated.BowBuildOutputDir
+import me.tbsten.compose.dom.bow.slot.MirrorballSlotImplementation
+import me.tbsten.compose.dom.bow.slot.Slot
 import me.tbsten.compose.dom.elements.Body
 import me.tbsten.compose.dom.elements.Div
 import me.tbsten.compose.dom.elements.Head
