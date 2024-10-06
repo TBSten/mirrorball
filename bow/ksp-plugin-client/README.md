@@ -1,0 +1,1 @@
+ClientSlotのアノテーションを処理してClientSlotとそのImplementationを処理するksp plugin

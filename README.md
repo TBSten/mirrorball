@@ -40,3 +40,6 @@ The following is a list of mirrorball's libraries.
   screen
   transitions according to URLs.
   Equivalent to compose-navigation in compose.
+
+These libraries can also be used in combination.
+You can also use [bow framework](./bow/README.md).

@@ -3,37 +3,30 @@ enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
 pluginManagement {
     repositories {
-        google {
-            mavenContent {
-                includeGroupAndSubgroups("androidx")
-                includeGroupAndSubgroups("com.android")
-                includeGroupAndSubgroups("com.google")
-            }
-        }
+        google()
         mavenCentral()
+        mavenLocal()
         gradlePluginPortal()
     }
-}
-plugins {
-    id("org.gradle.toolchains.foojay-resolver-convention") version "0.8.0"
 }
 
 dependencyResolutionManagement {
     repositories {
-        google {
-            mavenContent {
-                includeGroupAndSubgroups("androidx")
-                includeGroupAndSubgroups("com.android")
-                includeGroupAndSubgroups("com.google")
-            }
-        }
+        google()
+        mavenLocal()
         mavenCentral()
+        gradlePluginPortal()
     }
 }
 
 include(":core")
 include(":core:api")
 include(":core:html-lib")
+include(":bow")
+include(":bow:gradle-plugin")
+include(":bow:ksp-plugin-client")
+include(":bow:ksp-plugin-server")
+include(":bow:runtime")
 
 include(":generate")
 
