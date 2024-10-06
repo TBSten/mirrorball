@@ -5,11 +5,12 @@ import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import me.tbsten.compose.dom.attributes.hidden
 import me.tbsten.compose.dom.attributes.id
+import me.tbsten.compose.dom.bow.defaultBowJson
 import me.tbsten.compose.dom.elements.Div
 import me.tbsten.compose.dom.elements.Script
 
 @Composable
-inline fun <reified S : Slot> ClientSlot(slot: S) {
+inline fun <reified S : Slot> ClientSlot(slot: S, json: Json = defaultBowJson()) {
     val slotClassName =
         S::class.qualifiedName
             ?: throw IllegalArgumentException("Client Slot qualifiedName is null")
@@ -23,6 +24,6 @@ inline fun <reified S : Slot> ClientSlot(slot: S) {
         hidden(true)
         attr("type", "application/json")
     }) {
-        +Json.encodeToString(slot)
+        +json.encodeToString(slot)
     }
 }

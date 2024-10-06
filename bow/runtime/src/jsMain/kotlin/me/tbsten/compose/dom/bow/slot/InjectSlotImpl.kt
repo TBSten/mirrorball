@@ -3,11 +3,13 @@ package me.tbsten.compose.dom.bow.slot
 import androidx.compose.runtime.Composable
 import kotlinx.browser.document
 import kotlinx.serialization.json.Json
+import me.tbsten.compose.dom.bow.defaultBowJson
 import me.tbsten.compose.dom.renderComposable
 import org.w3c.dom.HTMLElement
 
 inline fun <reified S : Slot> injectSlotImpl(
     slotClassName: String,
+    json: Json? = null,
     crossinline impl: @Composable (args: S) -> Unit,
 ) {
     val slotElementId = "--bow-client-slot-$slotClassName"
@@ -22,6 +24,7 @@ inline fun <reified S : Slot> injectSlotImpl(
             "Can not find slot args element of $slotArgsElementId"
         }
     (slotElement as HTMLElement).renderComposable {
-        impl(Json.decodeFromString<S>(slotArgsElement.innerHTML))
+        val decodeFormat = json ?: defaultBowJson()
+        impl(decodeFormat.decodeFromString<S>(slotArgsElement.innerHTML))
     }
 }
