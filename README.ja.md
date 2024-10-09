@@ -5,7 +5,7 @@ mirrorball ("Mirabo") はKotlinとJetpack Composeを使ってWebアプリを開�
 ```kt
 // 以下のコードはjsMainでもjvmMainでも機能します。
 element.renderComposable {
-    // your @Composable code
+  // your @Composable code
 }
 ```
 
@@ -33,6 +33,7 @@ mirrorballは複数のライブラリから構成されています。使用用�
   mirrorballを使ってcomposeライクにWebフロントエンドを構築するためのライブラリ。composeにおけるcompose-uiやcompose-foundationに相当します。
 - [`mirrorball-navigation`](./navigation/README.ja.md) (WIP) ... URLに応じて画面遷移を簡単に実装するためのライブラリ。
   composeにおけるcompose-navigationに相当します。
+- [`mirrorball-ktor`](./ktor/README.ja.md) ... ktor-serverとの統合です。
 
 これらのライブラリを組み合わせて使用することも、
 これら全てを統合しシームレスにWebアプリ開発が行える [bowフレームワーク](./bow/README.ja.md)
