@@ -26,6 +26,7 @@ kotlin {
 
 ktlint {
     filter {
-        exclude("src/commonMain/kotlin/me/tbsten/compose/dom/generated/**")
+        // 自動生成したファイルはチェックしない
+        exclude("**/me/tbsten/compose/dom/generated/**")
     }
 }
