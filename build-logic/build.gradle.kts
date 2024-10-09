@@ -4,7 +4,7 @@ plugins {
     `kotlin-dsl`
 }
 
-group = "me.tbsten.compose.dom.build.logic"
+group = "me.tbsten.mirrorball.build.logic"
 
 java {
     sourceCompatibility = JavaVersion.VERSION_17

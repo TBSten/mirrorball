@@ -5,16 +5,17 @@ plugins {
     alias(libs.plugins.jetbrainsCompose)
     alias(libs.plugins.compose.compiler)
     alias(libs.plugins.ksp)
-    id("me.tbsten.compose.dom.bow.server") version "0.0.1"
+    id("me.tbsten.mirrorball.bow.server") version "0.0.1"
 }
 
-group = "me.tbsten.compose.dom.demo.basic.server"
+group = "me.tbsten.mirrorball.demo.basic.server"
 version = "1.0.0"
 application {
-    mainClass.set("me.tbsten.compose.dom.demo.bow.server.ApplicationKt")
-    applicationDefaultJvmArgs = listOf(
-        "-Dio.ktor.development=${extra["io.ktor.development"] ?: "false"}",
-    )
+    mainClass.set("me.tbsten.mirrorball.demo.bow.server.ApplicationKt")
+    applicationDefaultJvmArgs =
+        listOf(
+            "-Dio.ktor.development=${extra["io.ktor.development"] ?: "false"}",
+        )
 }
 
 dependencies {

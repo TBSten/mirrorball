@@ -1,4 +1,4 @@
-package me.tbsten.compose.dom.generate
+package me.tbsten.mirrorball.generate
 
 data class Element(
     val elementName: String,

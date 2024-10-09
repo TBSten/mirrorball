@@ -1,4 +1,4 @@
-package me.tbsten.compose.dom.generate.elements
+package me.tbsten.mirrorball.generate.elements
 
 import com.squareup.kotlinpoet.ClassName
 import com.squareup.kotlinpoet.CodeBlock
@@ -8,17 +8,17 @@ import com.squareup.kotlinpoet.PropertySpec
 import com.squareup.kotlinpoet.TypeSpec
 import com.squareup.kotlinpoet.asTypeName
 import com.squareup.kotlinpoet.buildCodeBlock
-import me.tbsten.compose.dom.HtmlTagRef
-import me.tbsten.compose.dom.attributes.AttrsScope
-import me.tbsten.compose.dom.generate.Attribute
-import me.tbsten.compose.dom.generate.AttributesPackageName
-import me.tbsten.compose.dom.generate.BooleanAttribute
-import me.tbsten.compose.dom.generate.ElementsPackageName
-import me.tbsten.compose.dom.generate.EnumAttribute
-import me.tbsten.compose.dom.generate.NumberAttribute
-import me.tbsten.compose.dom.generate.StringAttribute
-import me.tbsten.compose.dom.generate.autoGenerateFileSpecBuilder
-import me.tbsten.compose.dom.generate.lowerCamelCase2UpperCamelCase
+import me.tbsten.mirrorball.HtmlTagRef
+import me.tbsten.mirrorball.attributes.AttrsScope
+import me.tbsten.mirrorball.generate.Attribute
+import me.tbsten.mirrorball.generate.AttributesPackageName
+import me.tbsten.mirrorball.generate.BooleanAttribute
+import me.tbsten.mirrorball.generate.ElementsPackageName
+import me.tbsten.mirrorball.generate.EnumAttribute
+import me.tbsten.mirrorball.generate.NumberAttribute
+import me.tbsten.mirrorball.generate.StringAttribute
+import me.tbsten.mirrorball.generate.autoGenerateFileSpecBuilder
+import me.tbsten.mirrorball.generate.lowerCamelCase2UpperCamelCase
 import kotlin.reflect.KClass
 
 internal fun elementAttrsScopeFile(
@@ -41,8 +41,7 @@ private fun elementAttrsScopeClass(
             .constructorBuilder()
             .addParameter("ref", HtmlTagRef::class)
             .build(),
-    )
-    .superclass(AttrsScope::class)
+    ).superclass(AttrsScope::class)
     .addSuperclassConstructorParameter(CodeBlock.of("ref"))
     // init { attr("${initialAttrs[].key}", "${initialAttrs[].value}") }
     .initialAttrsInitializerBlock(initialAttrs)
@@ -105,30 +104,29 @@ private fun FileSpec.Builder.addAttrsExtensionFunctions(
                 TypeSpec
                     .enumBuilder(enumName)
                     .primaryConstructor(
-                        FunSpec.constructorBuilder()
+                        FunSpec
+                            .constructorBuilder()
                             .addParameter("enumValue", String::class)
                             .build(),
-                    )
-                    .addProperty(
-                        PropertySpec.builder("enumValue", String::class)
+                    ).addProperty(
+                        PropertySpec
+                            .builder("enumValue", String::class)
                             .initializer("enumValue")
                             .build(),
-                    )
-                    .run {
+                    ).run {
                         attr.values.fold(this) { enumBuilder, enumEntry ->
                             enumBuilder
                                 .addEnumConstant(
                                     enumEntry.entryName,
-                                    TypeSpec.anonymousClassBuilder()
+                                    TypeSpec
+                                        .anonymousClassBuilder()
                                         .addSuperclassConstructorParameter(
                                             "%S",
                                             enumEntry.entryValue,
-                                        )
-                                        .build(),
+                                        ).build(),
                                 )
                         }
-                    }
-                    .build(),
+                    }.build(),
             )
         }
     }

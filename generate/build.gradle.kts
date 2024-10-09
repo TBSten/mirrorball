@@ -9,7 +9,7 @@ plugins {
 }
 
 application {
-    mainClass = "me.tbsten.compose.dom.generate.MainKt"
+    mainClass = "me.tbsten.mirrorball.generate.MainKt"
 }
 
 dependencies {

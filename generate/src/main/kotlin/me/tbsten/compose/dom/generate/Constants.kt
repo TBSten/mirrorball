@@ -1,4 +1,4 @@
-package me.tbsten.compose.dom.generate
+package me.tbsten.mirrorball.generate
 
 import com.squareup.kotlinpoet.ClassName
 
@@ -12,7 +12,7 @@ val NotEditMessage =
      */
     """.trimIndent()
 
-const val LibraryPackageName = "me.tbsten.compose.dom"
+const val LibraryPackageName = "me.tbsten.mirrorball"
 const val ElementsPackageName = "$LibraryPackageName.elements"
 const val AttributesPackageName = "$LibraryPackageName.attributes"
 

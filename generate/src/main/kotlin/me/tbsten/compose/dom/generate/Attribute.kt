@@ -1,4 +1,4 @@
-package me.tbsten.compose.dom.generate
+package me.tbsten.mirrorball.generate
 
 fun Attribute.fileContent(parentElement: Element?) =
     when (this) {

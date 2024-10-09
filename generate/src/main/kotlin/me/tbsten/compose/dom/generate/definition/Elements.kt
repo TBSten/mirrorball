@@ -1,13 +1,13 @@
-package me.tbsten.compose.dom.generate.definition
+package me.tbsten.mirrorball.generate.definition
 
-import me.tbsten.compose.dom.generate.Element
-import me.tbsten.compose.dom.generate.ElementAttrsBuilderScope
-import me.tbsten.compose.dom.generate.boolAttr
-import me.tbsten.compose.dom.generate.elementOf
-import me.tbsten.compose.dom.generate.entry
-import me.tbsten.compose.dom.generate.enumAttr
-import me.tbsten.compose.dom.generate.numAttr
-import me.tbsten.compose.dom.generate.strAttr
+import me.tbsten.mirrorball.generate.Element
+import me.tbsten.mirrorball.generate.ElementAttrsBuilderScope
+import me.tbsten.mirrorball.generate.boolAttr
+import me.tbsten.mirrorball.generate.elementOf
+import me.tbsten.mirrorball.generate.entry
+import me.tbsten.mirrorball.generate.enumAttr
+import me.tbsten.mirrorball.generate.numAttr
+import me.tbsten.mirrorball.generate.strAttr
 
 val elements: List<Element> =
     listOf(

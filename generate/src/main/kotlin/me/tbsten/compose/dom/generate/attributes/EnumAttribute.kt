@@ -1,10 +1,10 @@
-package me.tbsten.compose.dom.generate.attributes
+package me.tbsten.mirrorball.generate.attributes
 
 import com.squareup.kotlinpoet.ClassName
 import com.squareup.kotlinpoet.FunSpec
 import com.squareup.kotlinpoet.PropertySpec
 import com.squareup.kotlinpoet.TypeSpec
-import me.tbsten.compose.dom.generate.EnumAttribute
+import me.tbsten.mirrorball.generate.EnumAttribute
 
 fun attrEnumTypeSpec(
     attr: EnumAttribute,
@@ -12,27 +12,26 @@ fun attrEnumTypeSpec(
 ) = TypeSpec
     .enumBuilder(enumName)
     .primaryConstructor(
-        FunSpec.constructorBuilder()
+        FunSpec
+            .constructorBuilder()
             .addParameter("enumValue", String::class)
             .build(),
-    )
-    .addProperty(
-        PropertySpec.builder("enumValue", String::class)
+    ).addProperty(
+        PropertySpec
+            .builder("enumValue", String::class)
             .initializer("enumValue")
             .build(),
-    )
-    .run {
+    ).run {
         attr.values.fold(this) { enumBuilder, enumEntry ->
             enumBuilder
                 .addEnumConstant(
                     enumEntry.entryName,
-                    TypeSpec.anonymousClassBuilder()
+                    TypeSpec
+                        .anonymousClassBuilder()
                         .addSuperclassConstructorParameter(
                             "%S",
                             enumEntry.entryValue,
-                        )
-                        .build(),
+                        ).build(),
                 )
         }
-    }
-    .build()
+    }.build()

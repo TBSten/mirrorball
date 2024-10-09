@@ -1,17 +1,17 @@
-package me.tbsten.compose.dom.generate.attributes
+package me.tbsten.mirrorball.generate.attributes
 
 import com.squareup.kotlinpoet.ClassName
 import com.squareup.kotlinpoet.FunSpec
-import me.tbsten.compose.dom.attributes.AttrsScope
-import me.tbsten.compose.dom.generate.Attribute
-import me.tbsten.compose.dom.generate.AttributesPackageName
-import me.tbsten.compose.dom.generate.BooleanAttribute
-import me.tbsten.compose.dom.generate.EnumAttribute
-import me.tbsten.compose.dom.generate.NumberAttribute
-import me.tbsten.compose.dom.generate.StringAttribute
-import me.tbsten.compose.dom.generate.autoGenerateFileSpecBuilder
-import me.tbsten.compose.dom.generate.definition.globalAttributes
-import me.tbsten.compose.dom.generate.lowerCamelCase2UpperCamelCase
+import me.tbsten.mirrorball.attributes.AttrsScope
+import me.tbsten.mirrorball.generate.Attribute
+import me.tbsten.mirrorball.generate.AttributesPackageName
+import me.tbsten.mirrorball.generate.BooleanAttribute
+import me.tbsten.mirrorball.generate.EnumAttribute
+import me.tbsten.mirrorball.generate.NumberAttribute
+import me.tbsten.mirrorball.generate.StringAttribute
+import me.tbsten.mirrorball.generate.autoGenerateFileSpecBuilder
+import me.tbsten.mirrorball.generate.definition.globalAttributes
+import me.tbsten.mirrorball.generate.lowerCamelCase2UpperCamelCase
 import java.io.File
 import kotlin.reflect.KClass
 
@@ -53,8 +53,7 @@ suspend fun generateGlobalAttrsFile(generateDirectory: File) {
                                     .addStatement(
                                         """attr(%S, ${attr.kotlinName}.enumValue)""",
                                         attr.htmlName,
-                                    )
-                                    .build(),
+                                    ).build(),
                             )
                             file.addType(
                                 attrEnumTypeSpec(attr, enumName),

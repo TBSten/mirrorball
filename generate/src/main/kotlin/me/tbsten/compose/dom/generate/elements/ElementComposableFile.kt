@@ -1,4 +1,4 @@
-package me.tbsten.compose.dom.generate.elements
+package me.tbsten.mirrorball.generate.elements
 
 import androidx.compose.runtime.Composable
 import com.squareup.kotlinpoet.AnnotationSpec
@@ -10,10 +10,10 @@ import com.squareup.kotlinpoet.ParameterSpec
 import com.squareup.kotlinpoet.asClassName
 import com.squareup.kotlinpoet.buildCodeBlock
 import com.squareup.kotlinpoet.typeNameOf
-import me.tbsten.compose.dom.HtmlTagRef
-import me.tbsten.compose.dom.generate.ElementsPackageName
-import me.tbsten.compose.dom.generate.LibraryPackageName
-import me.tbsten.compose.dom.generate.autoGenerateFileSpecBuilder
+import me.tbsten.mirrorball.HtmlTagRef
+import me.tbsten.mirrorball.generate.ElementsPackageName
+import me.tbsten.mirrorball.generate.LibraryPackageName
+import me.tbsten.mirrorball.generate.autoGenerateFileSpecBuilder
 
 fun elementComposableFile(
     composableName: String,
@@ -24,26 +24,25 @@ fun elementComposableFile(
 private fun htmlTagComposableFunSpec(
     composableName: String,
     htmlName: String,
-) = FunSpec.builder(composableName)
+) = FunSpec
+    .builder(composableName)
     .addAnnotation(Composable::class)
     .addParameters(argumentsSpecs(composableName))
     .addStatement(
         "val attrsScope = %T(ref = ref).apply { attrs() }",
         ClassName(ElementsPackageName, "${composableName}AttrsScope"),
-    )
-    .addCode(
+    ).addCode(
         buildCodeBlock {
             addStatement(
                 "val tagContent :  @%T() (%T.() -> Unit) = {",
                 Composable::class,
-                ClassName("me.tbsten.compose.dom", "HtmlTagContentScope"),
+                ClassName("me.tbsten.mirrorball", "HtmlTagContentScope"),
             )
             addStatement("val scope = ${composableName}ContentScope(ref)")
             addStatement("scope.content()")
             addStatement("}")
         },
-    )
-    .addStatement(
+    ).addStatement(
         "%T(" +
             "localName = %S, " +
             "attrs = { applyScope(attrsScope) }, " +
@@ -57,44 +56,43 @@ private fun htmlTagComposableFunSpec(
             "HtmlTag",
         ),
         htmlName,
-    )
-    .build()
+    ).build()
 
 private fun argumentsSpecs(composableName: String) =
     listOf(
-        ParameterSpec.builder(
-            "attrs",
-            LambdaTypeName.get(
-                receiver = ClassName(ElementsPackageName, "${composableName}AttrsScope"),
-                returnType = typeNameOf<Unit>(),
-            ),
-        )
-            .defaultValue("{ }")
+        ParameterSpec
+            .builder(
+                "attrs",
+                LambdaTypeName.get(
+                    receiver = ClassName(ElementsPackageName, "${composableName}AttrsScope"),
+                    returnType = typeNameOf<Unit>(),
+                ),
+            ).defaultValue("{ }")
             .build(),
-        ParameterSpec.builder(
-            "ref",
-            HtmlTagRef::class,
-        )
-            .defaultValue(
+        ParameterSpec
+            .builder(
+                "ref",
+                HtmlTagRef::class,
+            ).defaultValue(
                 CodeBlock.of(
                     "%T()",
                     ClassName(LibraryPackageName, "rememberDefaultHtmlTagRef"),
                 ),
-            )
+            ).build(),
+        ParameterSpec
+            .builder(
+                "dangerouslySetInnerHTML",
+                String::class.asClassName().copy(nullable = true),
+            ).defaultValue(CodeBlock.of("null"))
             .build(),
-        ParameterSpec.builder(
-            "dangerouslySetInnerHTML",
-            String::class.asClassName().copy(nullable = true),
-        )
-            .defaultValue(CodeBlock.of("null"))
-            .build(),
-        ParameterSpec.builder(
-            "content",
-            LambdaTypeName.get(
-                receiver = ClassName(ElementsPackageName, "${composableName}ContentScope"),
-                returnType = typeNameOf<Unit>(),
-            ).copy(annotations = listOf(AnnotationSpec.builder(Composable::class).build())),
-        )
-            .defaultValue("{ }")
+        ParameterSpec
+            .builder(
+                "content",
+                LambdaTypeName
+                    .get(
+                        receiver = ClassName(ElementsPackageName, "${composableName}ContentScope"),
+                        returnType = typeNameOf<Unit>(),
+                    ).copy(annotations = listOf(AnnotationSpec.builder(Composable::class).build())),
+            ).defaultValue("{ }")
             .build(),
     )

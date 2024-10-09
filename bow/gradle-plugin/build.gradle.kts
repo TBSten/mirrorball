@@ -15,18 +15,18 @@ dependencies {
 
 gradlePlugin {
     plugins {
-        create("compose.dom.bow") {
-            id = "me.tbsten.compose.dom.bow"
+        create("mirrorball.bow") {
+            id = "me.tbsten.mirrorball.bow"
             version = "0.0.1"
             implementationClass =
-                "me.tbsten.compose.dom.bow.gradle.plugin.BowPlugin"
+                "me.tbsten.mirrorball.bow.gradle.plugin.BowPlugin"
             displayName = "Mirrorball Bow Plugin"
         }
-        create("compose.dom.bow.server") {
-            id = "me.tbsten.compose.dom.bow.server"
+        create("mirrorball.bow.server") {
+            id = "me.tbsten.mirrorball.bow.server"
             version = "0.0.1"
             implementationClass =
-                "me.tbsten.compose.dom.bow.gradle.plugin.BowServerPlugin"
+                "me.tbsten.mirrorball.bow.gradle.plugin.BowServerPlugin"
             displayName = "Mirrorball Bow Server Plugin"
         }
     }

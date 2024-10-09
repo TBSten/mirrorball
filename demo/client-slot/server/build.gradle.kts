@@ -6,16 +6,17 @@ plugins {
     alias(libs.plugins.compose.compiler)
     alias(libs.plugins.ksp)
     alias(libs.plugins.kotlinx.serialization)
-    id("me.tbsten.compose.dom.bow.server") version "0.0.1"
+    id("me.tbsten.mirrorball.bow.server") version "0.0.1"
 }
 
-group = "me.tbsten.compose.dom.demo.basic.server"
+group = "me.tbsten.mirrorball.demo.basic.server"
 version = "1.0.0"
 application {
-    mainClass.set("me.tbsten.compose.dom.demo.client.slot.server.ApplicationKt")
-    applicationDefaultJvmArgs = listOf(
-        "-Dio.ktor.development=${extra["io.ktor.development"] ?: "false"}",
-    )
+    mainClass.set("me.tbsten.mirrorball.demo.client.slot.server.ApplicationKt")
+    applicationDefaultJvmArgs =
+        listOf(
+            "-Dio.ktor.development=${extra["io.ktor.development"] ?: "false"}",
+        )
 }
 
 dependencies {

@@ -6,13 +6,14 @@ plugins {
     alias(libs.plugins.compose.compiler)
 }
 
-group = "me.tbsten.compose.dom.demo.basic.server"
+group = "me.tbsten.mirrorball.demo.basic.server"
 version = "1.0.0"
 application {
-    mainClass.set("me.tbsten.compose.dom.demo.basic.server.ApplicationKt")
-    applicationDefaultJvmArgs = listOf(
-        "-Dio.ktor.development=${extra["io.ktor.development"] ?: "false"}",
-    )
+    mainClass.set("me.tbsten.mirrorball.demo.basic.server.ApplicationKt")
+    applicationDefaultJvmArgs =
+        listOf(
+            "-Dio.ktor.development=${extra["io.ktor.development"] ?: "false"}",
+        )
 }
 
 dependencies {

@@ -1,10 +1,10 @@
-package me.tbsten.compose.dom.generate
+package me.tbsten.mirrorball.generate
 
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.joinAll
 import kotlinx.coroutines.launch
-import me.tbsten.compose.dom.generate.attributes.generateGlobalAttrsFile
-import me.tbsten.compose.dom.generate.elements.generateElementsFiles
+import me.tbsten.mirrorball.generate.attributes.generateGlobalAttrsFile
+import me.tbsten.mirrorball.generate.elements.generateElementsFiles
 import java.io.File
 
 suspend fun main(args: Array<String>) =
@@ -35,7 +35,7 @@ TODO
 
 @file:Suppress("PackageDirectoryMismatch", "unused")
 
-package me.tbsten.compose.dom.elements
+package me.tbsten.mirrorball.elements
 
 /*
  *
@@ -45,9 +45,9 @@ package me.tbsten.compose.dom.elements
  */
 
 import androidx.compose.runtime.Composable
-import me.tbsten.compose.dom.HtmlTag
-import me.tbsten.compose.dom.HtmlTagRef
-import me.tbsten.compose.dom.rememberDefaultHtmlTagRef
+import me.tbsten.mirrorball.HtmlTag
+import me.tbsten.mirrorball.HtmlTagRef
+import me.tbsten.mirrorball.rememberDefaultHtmlTagRef
 
 @Composable
 fun A(
@@ -74,7 +74,7 @@ fun A(
 
 @file:Suppress("PackageDirectoryMismatch", "unused")
 
-package me.tbsten.compose.dom.elements
+package me.tbsten.mirrorball.elements
 
 /*
  *
@@ -83,9 +83,9 @@ package me.tbsten.compose.dom.elements
  *
  */
 
-import me.tbsten.compose.dom.HtmlTagRef
-import me.tbsten.compose.dom.attributes.AttrsScope
-import me.tbsten.compose.dom.attributes.attr
+import me.tbsten.mirrorball.HtmlTagRef
+import me.tbsten.mirrorball.attributes.AttrsScope
+import me.tbsten.mirrorball.attributes.attr
 
 class ElementAttrsScope(ref: HtmlTagRef) : AttrsScope(ref = ref) {
     init {
@@ -112,7 +112,7 @@ enum class ElementAttr4(val value: String) {
 
 @file:Suppress("PackageDirectoryMismatch", "unused")
 
-package me.tbsten.compose.dom.elements
+package me.tbsten.mirrorball.elements
 
 /*
  *
@@ -121,8 +121,8 @@ package me.tbsten.compose.dom.elements
  *
  */
 
-import me.tbsten.compose.dom.HtmlTagContentScope
-import me.tbsten.compose.dom.HtmlTagRef
+import me.tbsten.mirrorball.HtmlTagContentScope
+import me.tbsten.mirrorball.HtmlTagRef
 
 class ElementNameContentScope(ref: HtmlTagRef) : HtmlTagContentScope(ref)
 
@@ -132,7 +132,7 @@ class ElementNameContentScope(ref: HtmlTagRef) : HtmlTagContentScope(ref)
 
 @file:Suppress("PackageDirectoryMismatch", "unused")
 
-package me.tbsten.compose.dom.attributes
+package me.tbsten.mirrorball.attributes
 
 /*
  *

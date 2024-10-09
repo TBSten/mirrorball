@@ -1,5 +1,5 @@
 plugins {
-    id("me.tbsten.compose.dom.bow") version "0.0.1"
+    id("me.tbsten.mirrorball.bow") version "0.0.1"
 }
 
 bow {

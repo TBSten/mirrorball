@@ -1,10 +1,10 @@
-package me.tbsten.compose.dom.generate.elements
+package me.tbsten.mirrorball.generate.elements
 
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.joinAll
 import kotlinx.coroutines.launch
-import me.tbsten.compose.dom.generate.Element
-import me.tbsten.compose.dom.generate.definition.elements
+import me.tbsten.mirrorball.generate.Element
+import me.tbsten.mirrorball.generate.definition.elements
 import java.io.File
 
 /**
@@ -12,14 +12,15 @@ import java.io.File
  */
 suspend fun generateElementsFiles(generateDirectory: File) =
     coroutineScope {
-        elements.map { element ->
-            launch {
-                generateElementFiles(
-                    element,
-                    generateDirectory,
-                )
-            }
-        }.joinAll()
+        elements
+            .map { element ->
+                launch {
+                    generateElementFiles(
+                        element,
+                        generateDirectory,
+                    )
+                }
+            }.joinAll()
     }
 
 private suspend fun generateElementFiles(
