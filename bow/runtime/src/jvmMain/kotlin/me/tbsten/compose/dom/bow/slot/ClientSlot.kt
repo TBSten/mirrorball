@@ -10,7 +10,10 @@ import me.tbsten.compose.dom.elements.Div
 import me.tbsten.compose.dom.elements.Script
 
 @Composable
-inline fun <reified S : Slot> ClientSlot(slot: S, json: Json = defaultBowJson()) {
+inline fun <reified S : Slot> ClientSlot(
+    slot: S,
+    json: Json = defaultBowJson(),
+) {
     val slotClassName =
         S::class.qualifiedName
             ?: throw IllegalArgumentException("Client Slot qualifiedName is null")

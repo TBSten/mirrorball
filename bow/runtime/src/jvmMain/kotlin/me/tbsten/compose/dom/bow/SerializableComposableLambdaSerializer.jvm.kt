@@ -36,7 +36,10 @@ internal class SerializableComposableLambdaSerializer(
         }
     }
 
-    override fun serialize(encoder: Encoder, value: SerializableComposableLambda) {
+    override fun serialize(
+        encoder: Encoder,
+        value: SerializableComposableLambda,
+    ) {
         val element = document.createElement("div")
         element.renderComposable(
             styleSheet = styleSheet,
@@ -47,10 +50,11 @@ internal class SerializableComposableLambdaSerializer(
 }
 
 private fun Element.toHtmlString(): String {
-    val transformer = TransformerFactory.newInstance().newTransformer()
-        .apply {
-            setOutputProperty(OutputKeys.METHOD, "html")
-        }
+    val transformer =
+        TransformerFactory.newInstance().newTransformer()
+            .apply {
+                setOutputProperty(OutputKeys.METHOD, "html")
+            }
 
     val writer = StringWriter()
     val result = StreamResult(writer)

@@ -24,8 +24,7 @@ abstract class MirrorballStyleSheet(internal val key: Key = GlobalStyleSheetKey)
         this.plusAssign(other.builders.values.toList())
     }
 
-    private fun builderPair(builder: CssBuilder.() -> Unit): Pair<Int, CssBuilder.() -> Unit> =
-        CssBuilder().apply(builder).hashCode() to builder
+    private fun builderPair(builder: CssBuilder.() -> Unit): Pair<Int, CssBuilder.() -> Unit> = CssBuilder().apply(builder).hashCode() to builder
 
     override fun toString(): String =
         CssBuilder()

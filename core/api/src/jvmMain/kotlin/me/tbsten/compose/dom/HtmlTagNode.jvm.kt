@@ -57,8 +57,9 @@ internal actual fun HtmlText(text: String) {
 }
 
 private fun Element.addDangerouslySetInnerHTML(dangerouslySetInnerHTML: String) {
-    val builder = DocumentBuilderFactory.newInstance()
-        .newDocumentBuilder()
+    val builder =
+        DocumentBuilderFactory.newInstance()
+            .newDocumentBuilder()
     val inputSource = InputSource(StringReader(dangerouslySetInnerHTML))
     val newDocument = builder.parse(inputSource)
     val importedNode = newDocument.importNode(newDocument.documentElement, true)

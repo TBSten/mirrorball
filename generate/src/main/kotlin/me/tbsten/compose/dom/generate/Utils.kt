@@ -36,8 +36,7 @@ fun kebabCase2LowerCamelCase(input: String): String =
         }
         .joinToString("")
 
-fun lowerCamelCase2UpperCamelCase(value: String): String =
-    value[0].uppercase() + if (value.length >= 2) value.slice(1..<value.length) else ""
+fun lowerCamelCase2UpperCamelCase(value: String): String = value[0].uppercase() + if (value.length >= 2) value.slice(1..<value.length) else ""
 
 fun upperCamelCase2LowerCamelCase(input: String): String {
     return input.replaceFirstChar { it.lowercase() }

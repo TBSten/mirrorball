@@ -1,7 +1,6 @@
 package me.tbsten.compose.dom
 
 import androidx.compose.runtime.AbstractApplier
-import org.w3c.dom.Element
 import org.w3c.dom.Node
 
 internal class JvmDomApplier(root: Node) : AbstractApplier<Node>(root) {
@@ -12,7 +11,10 @@ internal class JvmDomApplier(root: Node) : AbstractApplier<Node>(root) {
         }
     }
 
-    override fun insertBottomUp(index: Int, instance: Node) {
+    override fun insertBottomUp(
+        index: Int,
+        instance: Node,
+    ) {
         val length = current.childNodes.length
         if (index < length) {
             instance.childNodes
@@ -22,11 +24,18 @@ internal class JvmDomApplier(root: Node) : AbstractApplier<Node>(root) {
         }
     }
 
-    override fun insertTopDown(index: Int, instance: Node) {
+    override fun insertTopDown(
+        index: Int,
+        instance: Node,
+    ) {
         // ignored. Building tree bottom-up
     }
 
-    override fun move(from: Int, to: Int, count: Int) {
+    override fun move(
+        from: Int,
+        to: Int,
+        count: Int,
+    ) {
         if (from == to) {
             return // nothing to do
         }
@@ -41,7 +50,10 @@ internal class JvmDomApplier(root: Node) : AbstractApplier<Node>(root) {
         }
     }
 
-    override fun remove(index: Int, count: Int) {
+    override fun remove(
+        index: Int,
+        count: Int,
+    ) {
         repeat(count) {
             current.removeChild(current.childNodes.item(index))
         }

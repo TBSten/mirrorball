@@ -14,9 +14,10 @@ class BowConfiguration(
         val Dev =
             BowConfiguration(
                 confName = "dev",
-//            jsBuildTask = "jsBrowserDevelopmentExecutableDistribution",
-                jsBuildTask = "jsBrowserDistribution", // must be `jsBrowserDevelopmentExecutableDistribution` but its outputs are very big.
-                jsBuildOutputDir = "dist/js/productionExecutable", // must be `dist/js/developmentExecutable` but jsBuildTask is outputs are very big.
+                // must be `jsBrowserDevelopmentExecutableDistribution` but its outputs are very big.
+                jsBuildTask = "jsBrowserDistribution",
+                // must be `dist/js/developmentExecutable` but jsBuildTask is outputs are very big.
+                jsBuildOutputDir = "dist/js/productionExecutable",
                 jvmBuildTask = null,
                 jvmBuildOutputDir = null,
                 jvmRunTask = JvmRunTask.RunTask("run"),
@@ -40,7 +41,11 @@ class BowConfiguration(
 }
 
 sealed interface JvmRunTask {
-    class RunTask(val taskName: String) : JvmRunTask
+    class RunTask(
+        val taskName: String,
+    ) : JvmRunTask
 
-    class Error(val message: String) : JvmRunTask
+    class Error(
+        val message: String,
+    ) : JvmRunTask
 }

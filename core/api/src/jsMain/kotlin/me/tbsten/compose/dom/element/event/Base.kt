@@ -9,7 +9,7 @@ import org.w3c.dom.events.Event
 @Composable
 inline fun <reified E : Event> HtmlTagContentScope.onEvent(
     eventName: String,
-    crossinline block: (E) -> Unit
+    crossinline block: (E) -> Unit,
 ) {
     DisposableEffect(this.ref, eventName) {
         val element = ref.currentElement ?: return@DisposableEffect onDispose { }

@@ -51,10 +51,11 @@ private fun htmlTagComposableFunSpec(
             "content = tagContent," +
             "dangerouslySetInnerHTML = dangerouslySetInnerHTML," +
             ")",
+        // Composable関数を自動生成ファイルで参照できないためClassNameで指定している
         ClassName(
             LibraryPackageName,
             "HtmlTag",
-        ), // Composable関数を自動生成ファイルで参照できないためClassNameで指定している
+        ),
         htmlName,
     )
     .build()

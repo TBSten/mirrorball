@@ -16,9 +16,10 @@ actual fun defaultBowJson(): Json {
     val styleSheet = LocalMirrorballStyleSheet.current as JvmMirrorballStyleSheet
     return remember {
         Json {
-            serializersModule = SerializersModule {
-                contextual(SerializableComposableLambdaSerializer(document, styleSheet))
-            }
+            serializersModule =
+                SerializersModule {
+                    contextual(SerializableComposableLambdaSerializer(document, styleSheet))
+                }
         }
     }
 }

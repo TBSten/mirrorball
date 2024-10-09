@@ -16,8 +16,9 @@ actual fun HtmlTag(
     dangerouslySetInnerHTML: String?,
     content: @Composable HtmlTagContentScope.() -> Unit,
 ) {
-    val attrsScope = AttrsScope(ref = ref)
-        .apply { attrs() }
+    val attrsScope =
+        AttrsScope(ref = ref)
+            .apply { attrs() }
     val contentScope = HtmlTagContentScope(ref)
 
     ComposeNode<Element, JsDomApplier>(
@@ -48,7 +49,6 @@ actual fun HtmlTag(
             contentScope.content()
         },
     )
-
 }
 
 @Composable

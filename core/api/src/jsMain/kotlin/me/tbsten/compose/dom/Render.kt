@@ -21,10 +21,11 @@ fun Element.renderComposable(
     val recomposer = Recomposer(recompositionContext)
     val applier = JsDomApplier(this)
 
-    val composition = ControlledComposition(
-        applier = applier,
-        parent = recomposer,
-    )
+    val composition =
+        ControlledComposition(
+            applier = applier,
+            parent = recomposer,
+        )
 
     composition.setContent {
         MirrorballRoot(styleSheet = styleSheet) {
@@ -37,10 +38,10 @@ fun Element.renderComposable(
     }
 }
 //
-//fun HTMLElement.renderComposable(
+// fun HTMLElement.renderComposable(
 //    styleSheet: JsMirrorballStyleSheet = JsMirrorballStyleSheet(),
 //    content: @Composable () -> Unit,
-//) {
+// ) {
 //    GlobalSnapshotManager.ensureStarted()
 //
 //    val recompositionContext = DefaultMonotonicFrameClock + Dispatchers.Main
@@ -61,4 +62,4 @@ fun Element.renderComposable(
 //    CoroutineScope(recompositionContext).launch(start = CoroutineStart.UNDISPATCHED) {
 //        recomposer.runRecomposeAndApplyChanges()
 //    }
-//}
+// }

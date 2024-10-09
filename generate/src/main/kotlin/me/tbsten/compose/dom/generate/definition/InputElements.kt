@@ -1,6 +1,12 @@
 package me.tbsten.compose.dom.generate.definition
 
-import me.tbsten.compose.dom.generate.*
+import me.tbsten.compose.dom.generate.ElementAttrsBuilderScope
+import me.tbsten.compose.dom.generate.boolAttr
+import me.tbsten.compose.dom.generate.elementOf
+import me.tbsten.compose.dom.generate.entry
+import me.tbsten.compose.dom.generate.enumAttr
+import me.tbsten.compose.dom.generate.numAttr
+import me.tbsten.compose.dom.generate.strAttr
 
 fun inputElementOf(
     type: String?,

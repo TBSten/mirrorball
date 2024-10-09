@@ -9,9 +9,9 @@ import kotlinx.browser.document as browserDocument
 private const val MirrorballStyleTagId = "__mirrorball_styles__"
 
 class JsMirrorballStyleSheet : MirrorballStyleSheet() {
-    internal fun applyToDocument(document: Document = browserDocument) {
+    private fun applyToDocument(document: Document = browserDocument) {
         val mirrorballStyleSheet = this
-        val styleTagId = "${MirrorballStyleTagId}-${mirrorballStyleSheet.key.value}"
+        val styleTagId = "$MirrorballStyleTagId-${mirrorballStyleSheet.key.value}"
         val styleElement =
             document.getElementById(styleTagId)?.let { it as? HTMLStyleElement }
                 ?: document.createElement("style").apply {

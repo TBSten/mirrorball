@@ -11,9 +11,10 @@ import kotlinx.serialization.modules.contextual
 actual fun defaultBowJson(): Json {
     return remember {
         Json {
-            serializersModule = SerializersModule {
-                contextual(SerializableComposableLambdaSerializer(document))
-            }
+            serializersModule =
+                SerializersModule {
+                    contextual(SerializableComposableLambdaSerializer(document))
+                }
         }
     }
 }

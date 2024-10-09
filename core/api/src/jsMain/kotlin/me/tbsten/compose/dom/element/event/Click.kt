@@ -5,5 +5,4 @@ import me.tbsten.compose.dom.HtmlTagContentScope
 import org.w3c.dom.events.MouseEvent
 
 @Composable
-fun HtmlTagContentScope.onClick(block: (MouseEvent) -> Unit) =
-    onEvent("click", block)
+fun HtmlTagContentScope.onClick(block: (MouseEvent) -> Unit) = onEvent("click", block)

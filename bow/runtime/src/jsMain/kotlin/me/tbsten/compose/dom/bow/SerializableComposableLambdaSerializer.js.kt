@@ -26,11 +26,15 @@ internal class SerializableComposableLambdaSerializer(private val document: Docu
         }
     }
 
-    override fun serialize(encoder: Encoder, value: SerializableComposableLambda) {
-        val serializedContentElement = document.createElement("div")
-            .apply {
-                renderComposable { value() }
-            }
+    override fun serialize(
+        encoder: Encoder,
+        value: SerializableComposableLambda,
+    ) {
+        val serializedContentElement =
+            document.createElement("div")
+                .apply {
+                    renderComposable { value() }
+                }
         encoder.encodeString(serializedContentElement.toString())
     }
 }

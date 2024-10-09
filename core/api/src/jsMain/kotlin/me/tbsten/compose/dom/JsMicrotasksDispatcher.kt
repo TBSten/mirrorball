@@ -6,7 +6,10 @@ import kotlin.coroutines.CoroutineContext
 import kotlin.js.Promise
 
 class JsMicrotasksDispatcher : CoroutineDispatcher() {
-    override fun dispatch(context: CoroutineContext, block: Runnable) {
+    override fun dispatch(
+        context: CoroutineContext,
+        block: Runnable,
+    ) {
         Promise.resolve(Unit).then { block.run() }
     }
 }

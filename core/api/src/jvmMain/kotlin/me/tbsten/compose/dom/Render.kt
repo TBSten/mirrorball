@@ -15,10 +15,11 @@ fun Node.renderComposable(
     val recompositionContext = Dispatchers.Main
     val recomposer = Recomposer(recompositionContext)
 
-    val composition = ControlledComposition(
-        applier = JvmDomApplier(this),
-        parent = recomposer,
-    )
+    val composition =
+        ControlledComposition(
+            applier = JvmDomApplier(this),
+            parent = recomposer,
+        )
 
     composition.setContent {
         MirrorballRoot(styleSheet = styleSheet) {

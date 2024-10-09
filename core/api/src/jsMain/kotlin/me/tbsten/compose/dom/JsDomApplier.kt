@@ -8,12 +8,17 @@ import org.w3c.dom.get
 class JsDomApplier(
     root: Node,
 ) : AbstractApplier<Node>(root) {
-
-    override fun insertTopDown(index: Int, instance: Node) {
+    override fun insertTopDown(
+        index: Int,
+        instance: Node,
+    ) {
         // ignored. Building tree bottom-up
     }
 
-    override fun insertBottomUp(index: Int, instance: Node) {
+    override fun insertBottomUp(
+        index: Int,
+        instance: Node,
+    ) {
         val length = current.childNodes.length
         if (index < length) {
             current.insertBefore(instance, current.childNodes[index]!!)
@@ -22,13 +27,20 @@ class JsDomApplier(
         }
     }
 
-    override fun remove(index: Int, count: Int) {
+    override fun remove(
+        index: Int,
+        count: Int,
+    ) {
         repeat(count) {
             current.removeChild(current.childNodes[index]!!)
         }
     }
 
-    override fun move(from: Int, to: Int, count: Int) {
+    override fun move(
+        from: Int,
+        to: Int,
+        count: Int,
+    ) {
         if (from == to) {
             return // nothing to do
         }
