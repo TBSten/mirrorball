@@ -18,7 +18,7 @@ kotlin {
 
     sourceSets {
         jsMain.dependencies {
-            implementation(projects.demo.clientSlot.shared)
+            implementation(projects.demo.bow.shared)
             implementation(libs.kotlinx.serialization)
             implementation(compose.runtime)
             implementation(projects.demo.basic.shared)
@@ -26,7 +26,6 @@ kotlin {
             implementation(libs.kotlin.wrappers.css)
         }
     }
-
 }
 
 dependencies {

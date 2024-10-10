@@ -26,7 +26,7 @@ dependencies {
     testImplementation(libs.kotlin.test.junit)
     implementation(libs.kotlinx.serialization)
 
-    implementation(projects.demo.clientSlot.shared)
+    implementation(projects.demo.bow.shared)
     implementation(compose.runtime)
     implementation(libs.kotlinx.coroutines)
     implementation(libs.kotlin.wrappers.css)
