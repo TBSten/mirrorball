@@ -20,7 +20,7 @@ kotlin {
             implementation(libs.kotlinx.coroutines)
             implementation(libs.kotlin.wrappers.css)
 
-            api(projects.core.api)
+            api(projects.core.coreApi)
             api(projects.core.htmlLib)
         }
         jvmMain.dependencies {

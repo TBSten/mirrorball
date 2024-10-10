@@ -21,7 +21,7 @@ dependencyResolutionManagement {
 }
 
 include(":core")
-include(":core:api")
+include(":core:core-api")
 include(":core:html-lib")
 include(":ktor")
 

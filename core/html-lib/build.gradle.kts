@@ -19,7 +19,7 @@ kotlin {
             implementation(libs.kotlinx.html)
             implementation(libs.kotlinx.coroutines)
             implementation(libs.kotlin.wrappers.css)
-            implementation(projects.core.api)
+            implementation(projects.core.coreApi)
         }
     }
 }

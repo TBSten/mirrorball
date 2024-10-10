@@ -16,7 +16,7 @@ dependencies {
     implementation(libs.kotlinx.coroutines)
     implementation(libs.kotlin.poet)
     implementation(compose.runtime)
-    implementation(projects.core.api)
+    implementation(projects.core.coreApi)
 }
 
 tasks.named<JavaExec>("run") {
