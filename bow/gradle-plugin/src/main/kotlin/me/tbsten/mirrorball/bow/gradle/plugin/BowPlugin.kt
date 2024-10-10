@@ -24,11 +24,9 @@ open class BowPlugin : Plugin<Project> {
                     val serverProject =
                         bowExtension.entryProjects.serverProject
                             .requireNotNull { "Not configured `bow.entryProjects.server`" }
-                    serverProject.extensions.extraProperties["bowInternal.buildOutputDir"] =
-                        buildOutputDir
-                            .map { it.dir("static") }
-                            .get()
-                            .asFile.absolutePath
+                    serverProject.afterEvaluate {
+                        serverProject.pluginManager.apply(BowServerPlugin::class.java)
+                    }
 
                     registerBuildTask(conf, buildOutputDir, bowExtension)
                     registerRunTask(conf, buildOutputDir, bowExtension)

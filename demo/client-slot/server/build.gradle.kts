@@ -6,7 +6,6 @@ plugins {
     alias(libs.plugins.compose.compiler)
     alias(libs.plugins.ksp)
     alias(libs.plugins.kotlinx.serialization)
-    id("me.tbsten.mirrorball.bow.server") version "0.0.1"
 }
 
 group = "me.tbsten.mirrorball.demo.basic.server"
@@ -35,5 +34,6 @@ dependencies {
     implementation(projects.ktor)
 
     implementation(projects.bow.runtime)
+    // TODO move to gradle plugin
     ksp(projects.bow.kspPluginServer)
 }

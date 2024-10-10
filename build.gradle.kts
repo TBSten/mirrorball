@@ -10,7 +10,6 @@ plugins {
     alias(libs.plugins.ktlint) apply false
 
     id("me.tbsten.mirrorball.bow") version "0.0.1" apply false
-    id("me.tbsten.mirrorball.bow.server") version "0.0.1" apply false
 }
 
 buildscript {

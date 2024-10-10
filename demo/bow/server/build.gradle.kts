@@ -5,7 +5,6 @@ plugins {
     alias(libs.plugins.jetbrainsCompose)
     alias(libs.plugins.compose.compiler)
     alias(libs.plugins.ksp)
-    id("me.tbsten.mirrorball.bow.server") version "0.0.1"
 }
 
 group = "me.tbsten.mirrorball.demo.basic.server"
