@@ -8,6 +8,7 @@ plugins {
     alias(libs.plugins.ksp) apply false
     alias(libs.plugins.ktor) apply false
     alias(libs.plugins.ktlint) apply false
+    alias(libs.plugins.kotlin.binary.compability.validator)
 
     id("me.tbsten.mirrorball.bow") version "0.0.1" apply false
 }
