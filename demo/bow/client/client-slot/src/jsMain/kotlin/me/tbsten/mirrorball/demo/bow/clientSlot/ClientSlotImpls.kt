@@ -1,4 +1,4 @@
-package me.tbsten.mirrorball.demo.client.slot.client
+package me.tbsten.mirrorball.demo.bow.clientSlot
 
 import androidx.compose.runtime.Composable
 import me.tbsten.mirrorball.bow.slot.MirrorballSlotImplementation

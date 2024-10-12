@@ -34,6 +34,4 @@ dependencies {
     implementation(projects.ktor)
 
     implementation(projects.bow.runtime)
-    // TODO move to gradle plugin
-    ksp(projects.bow.kspPluginServer)
 }

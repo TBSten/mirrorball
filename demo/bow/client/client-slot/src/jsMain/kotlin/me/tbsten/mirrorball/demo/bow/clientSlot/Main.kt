@@ -1,4 +1,4 @@
-package me.tbsten.mirrorball.demo.client.slot.client
+package me.tbsten.mirrorball.demo.bow.clientSlot
 
 import kotlinx.browser.window
 import me.tbsten.mirrorball.bow.generated.injectClientSlots

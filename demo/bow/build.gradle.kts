@@ -4,7 +4,8 @@ plugins {
 
 bow {
     entryProjects {
-        clientPage(projects.demo.bow.client, "")
+        clientScript(projects.demo.bow.client.top, "")
+        clientScript(projects.demo.bow.client.clientSlot, "client-slot")
         server(projects.demo.bow.server)
     }
 }
