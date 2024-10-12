@@ -16,24 +16,24 @@ open class BowPluginExtension {
 class BowPluginEntryProjects {
     operator fun invoke(block: BowPluginEntryProjects.() -> Unit) = this.block()
 
-    internal val clientPageProjects = mutableMapOf<String, ClientPageProject>()
+    internal val clientScriptProjects = mutableMapOf<String, ClientScriptProject>()
     internal var serverProject: ServerProject? = null
 
     @Suppress("unused", "MemberVisibilityCanBePrivate")
-    fun clientPage(
+    fun clientScript(
         project: Project,
         modulePath: String,
     ) {
-        if (clientPageProjects[modulePath] != null) throw IllegalArgumentException("$modulePath (clientPage project) is already registered")
-        clientPageProjects[modulePath] = ClientPageProject(project, modulePath)
+        if (clientScriptProjects[modulePath] != null) throw IllegalArgumentException("$modulePath (clientPage project) is already registered")
+        clientScriptProjects[modulePath] = ClientScriptProject(project, normalizeModulePath(modulePath))
     }
 
     @Suppress("unused", "MemberVisibilityCanBePrivate")
-    fun clientPage(
+    fun clientScript(
         project: ProjectDependency,
         modulePath: String,
     ) {
-        clientPage(project.dependencyProject, modulePath)
+        clientScript(project.dependencyProject, modulePath)
     }
 
     @Suppress("unused", "MemberVisibilityCanBePrivate")
@@ -47,7 +47,7 @@ class BowPluginEntryProjects {
         server(project.dependencyProject)
     }
 
-    internal class ClientPageProject(
+    internal class ClientScriptProject(
         project: Project,
         val modulePath: String,
     ) : Project by project
@@ -56,3 +56,9 @@ class BowPluginEntryProjects {
         project: Project,
     ) : Project by project
 }
+
+private fun normalizeModulePath(modulePath: String): String =
+    modulePath
+        // 最初と最後の `/` を削除
+        .also { it.replace(Regex("^/"), "") }
+        .also { it.replace(Regex("/$"), "") }

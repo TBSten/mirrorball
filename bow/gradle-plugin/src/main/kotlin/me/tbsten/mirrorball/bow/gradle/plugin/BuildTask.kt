@@ -1,7 +1,6 @@
 package me.tbsten.mirrorball.bow.gradle.plugin
 
-import me.tbsten.mirrorball.bow.gradle.plugin.util.kotlin
-import me.tbsten.mirrorball.bow.gradle.plugin.util.ksp
+import me.tbsten.mirrorball.bow.gradle.plugin.util.kotlinMultiplatform
 import me.tbsten.mirrorball.bow.gradle.plugin.util.requireNotNull
 import org.gradle.api.Project
 import org.gradle.api.Task
@@ -15,14 +14,26 @@ fun Project.registerBuildTask(
     buildOutputDir: Provider<Directory>,
     bowExtension: BowPluginExtension,
 ) {
+    val clientProjects = bowExtension.entryProjects.clientScriptProjects.values
+
+    val serverProject =
+        bowExtension.entryProjects.serverProject
+            .requireNotNull { "Not Configured `bow.entryProjects.server`." }
+
+    val generateBuildInfoApiFiles =
+        tasks.register("bowInternal${bowConfiguration.capitalizedConfName}GenerateBuildInfoApiFiles") {
+            bowExtension.entryProjects.clientScriptProjects
+            generateBuildInfoApiFiles(serverProject, clientProjects.toList(), buildOutputDir)
+        }
+
     tasks.registerBowTask(
         "bowBuild${bowConfiguration.capitalizedConfName}",
         "<TODO>",
     ) { buildTask ->
-        val clientProjects = bowExtension.entryProjects.clientPageProjects.values
         clientProjects.forEach {
-            it.kotlin { configureBowJsTarget() }
+            it.kotlinMultiplatform { configureBowJsTarget() }
         }
+
         val clientBuildTasks =
             clientProjects
                 .map { clientProject ->
@@ -33,9 +44,6 @@ fun Project.registerBuildTask(
                     }
                 }.toTypedArray()
 
-        val serverProject =
-            bowExtension.entryProjects.serverProject
-                .requireNotNull { "Not Configured `bow.entryProjects.server`." }
         val serverBuildTask =
             bowConfiguration.jvmBuildTask?.let { jvmBuildTask ->
                 serverProject.tasks
@@ -44,23 +52,16 @@ fun Project.registerBuildTask(
                         copyServerBuildOutputs(buildOutputDir, bowConfiguration, serverProject)
                     }
             }
-        serverProject.ksp {
-            arg(
-                "bowInternal.buildOutputDir",
-                buildOutputDir
-                    .map { it.dir("static") }
-                    .get()
-                    .asFile.absolutePath,
-            )
-        }
 
         buildTask.dependsOn(
-//            recreateBuildOutputDirTask,
             *clientBuildTasks,
         )
+        buildTask.dependsOn(generateBuildInfoApiFiles)
         serverBuildTask?.let {
             buildTask.dependsOn(
-                serverBuildTask.apply { dependsOn(*clientBuildTasks) },
+                serverBuildTask.apply {
+                    dependsOn(*clientBuildTasks)
+                },
             )
         }
     }
@@ -89,7 +90,7 @@ private fun KotlinMultiplatformExtension.configureBowJsTarget() {
     js { jsTarget ->
         jsTarget.browser {
             commonWebpackConfig { webPackConfig ->
-                webPackConfig.outputFileName = "mirrorball_client_page.js"
+                webPackConfig.outputFileName = ClientScriptFileName
             }
         }
         jsTarget.binaries.executable()
@@ -99,7 +100,7 @@ private fun KotlinMultiplatformExtension.configureBowJsTarget() {
 private fun copyClientBuiltOutputs(
     buildOutputDir: Provider<Directory>,
     bowConfiguration: BowConfiguration,
-    clientProject: BowPluginEntryProjects.ClientPageProject,
+    clientProject: BowPluginEntryProjects.ClientScriptProject,
 ) {
     val clientProjectBuildOutputDir =
         clientProject.layout

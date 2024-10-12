@@ -2,6 +2,7 @@ package me.tbsten.mirrorball.bow.gradle.plugin
 
 import java.util.Locale
 
+// TODO migrate to gradle configuration api
 class BowConfiguration(
     val confName: String,
     val jsBuildTask: String,

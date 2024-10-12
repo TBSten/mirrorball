@@ -5,10 +5,15 @@ import io.ktor.plugin.features.FatJarExtension
 import io.ktor.plugin.features.KtorExtension
 import org.gradle.api.Project
 import org.gradle.api.plugins.ExtensionAware
+import org.jetbrains.kotlin.gradle.dsl.KotlinJvmProjectExtension
 import org.jetbrains.kotlin.gradle.dsl.KotlinMultiplatformExtension
 
-fun Project.kotlin(action: KotlinMultiplatformExtension.() -> Unit) {
+fun Project.kotlinMultiplatform(action: KotlinMultiplatformExtension.() -> Unit) {
     project.extensions.configure(KotlinMultiplatformExtension::class.java, action)
+}
+
+fun Project.kotlinJvm(action: KotlinJvmProjectExtension.() -> Unit) {
+    project.extensions.configure(KotlinJvmProjectExtension::class.java, action)
 }
 
 fun Project.ksp(action: KspExtension.() -> Unit) {

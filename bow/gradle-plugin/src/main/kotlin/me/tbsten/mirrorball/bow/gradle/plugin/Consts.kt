@@ -6,6 +6,8 @@ import org.gradle.api.tasks.TaskContainer
 
 const val GroupId = "me.tbsten.mirrorball"
 
+const val ClientScriptFileName = "mirrorball_client_page.js"
+
 internal fun TaskContainer.registerBowTask(
     name: String,
     description: String,
