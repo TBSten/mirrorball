@@ -28,7 +28,6 @@ include(":ktor")
 include(":bow")
 include(":bow:gradle-plugin")
 include(":bow:ksp-plugin-client")
-include(":bow:ksp-plugin-server")
 include(":bow:runtime")
 
 include(":generate")

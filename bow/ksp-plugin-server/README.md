@@ -1,2 +1,0 @@
-ClientPage gradle pluginが設定されているモジュールをBowClientModules.moduleNameでアクセスできるようにするksp
-plugin
