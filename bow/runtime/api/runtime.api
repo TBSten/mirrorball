@@ -1,0 +1,28 @@
+public abstract class me/tbsten/mirrorball/bow/ClientScript {
+	public static final field $stable I
+	public fun <init> (Ljava/lang/String;)V
+	public final fun getPathInStaticDir ()Ljava/lang/String;
+}
+
+public final class me/tbsten/mirrorball/bow/ClientScriptKt {
+	public static final fun Script (Lme/tbsten/mirrorball/bow/ClientScript;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lme/tbsten/mirrorball/HtmlTagRef;Ljava/lang/String;Landroidx/compose/runtime/Composer;II)V
+}
+
+public final class me/tbsten/mirrorball/bow/Json_jvmKt {
+	public static final fun defaultBowJson (Landroidx/compose/runtime/Composer;I)Lkotlinx/serialization/json/Json;
+}
+
+public final class me/tbsten/mirrorball/bow/SerializableComposableLambda {
+	public static final field $stable I
+	public fun <init> (Lkotlin/jvm/functions/Function2;)V
+	public final fun getContent ()Lkotlin/jvm/functions/Function2;
+	public final fun invoke (Landroidx/compose/runtime/Composer;I)V
+}
+
+public abstract interface annotation class me/tbsten/mirrorball/bow/slot/MirrorballSlotImplementation : java/lang/annotation/Annotation {
+	public abstract fun slot ()Ljava/lang/Class;
+}
+
+public abstract interface class me/tbsten/mirrorball/bow/slot/Slot {
+}
+

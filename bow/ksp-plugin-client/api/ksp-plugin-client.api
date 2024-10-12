@@ -1,0 +1,14 @@
+public final class me/tbsten/mirrorball/bow/MirrorballSlotImplementationProcessor : com/google/devtools/ksp/processing/SymbolProcessor {
+	public fun <init> (Lcom/google/devtools/ksp/processing/CodeGenerator;Lcom/google/devtools/ksp/processing/KSPLogger;)V
+	public fun process (Lcom/google/devtools/ksp/processing/Resolver;)Ljava/util/List;
+}
+
+public final class me/tbsten/mirrorball/bow/MirrorballSlotImplementationProcessorProvider : com/google/devtools/ksp/processing/SymbolProcessorProvider {
+	public fun <init> ()V
+	public fun create (Lcom/google/devtools/ksp/processing/SymbolProcessorEnvironment;)Lcom/google/devtools/ksp/processing/SymbolProcessor;
+}
+
+public final class me/tbsten/mirrorball/bow/WriteInjectClientSlotsKt {
+	public static final fun writeInjectClientSlots (Ljava/io/Writer;Ljava/lang/String;Ljava/util/Map;)V
+}
+

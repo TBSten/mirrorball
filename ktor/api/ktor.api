@@ -1,0 +1,23 @@
+public final class me/tbsten/mirrorball/ktor/ComposableSingletons$KtorExtensionsKt {
+	public static final field INSTANCE Lme/tbsten/mirrorball/ktor/ComposableSingletons$KtorExtensionsKt;
+	public static field lambda-1 Lkotlin/jvm/functions/Function3;
+	public fun <init> ()V
+	public final fun getLambda-1$ktor ()Lkotlin/jvm/functions/Function3;
+}
+
+public final class me/tbsten/mirrorball/ktor/KtorExtensionsKt {
+	public static final fun composable (Lio/ktor/server/routing/Routing;Ljava/lang/String;Ljava/lang/String;Lme/tbsten/mirrorball/styleSheet/JvmMirrorballStyleSheet;Lkotlin/jvm/functions/Function2;)V
+	public static synthetic fun composable$default (Lio/ktor/server/routing/Routing;Ljava/lang/String;Ljava/lang/String;Lme/tbsten/mirrorball/styleSheet/JvmMirrorballStyleSheet;Lkotlin/jvm/functions/Function2;ILjava/lang/Object;)V
+	public static final fun pipeTo (Lorg/w3c/dom/Document;Ljava/io/OutputStream;)V
+	public static final fun respondComposable (Lio/ktor/server/application/ApplicationCall;Lme/tbsten/mirrorball/styleSheet/JvmMirrorballStyleSheet;Lio/ktor/http/ContentType;Lorg/w3c/dom/Document;Lkotlin/jvm/functions/Function2;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun respondComposable$default (Lio/ktor/server/application/ApplicationCall;Lme/tbsten/mirrorball/styleSheet/JvmMirrorballStyleSheet;Lio/ktor/http/ContentType;Lorg/w3c/dom/Document;Lkotlin/jvm/functions/Function2;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public static final fun respondStyleSheet (Lio/ktor/server/application/ApplicationCall;Lme/tbsten/mirrorball/styleSheet/JvmMirrorballStyleSheet;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public final class me/tbsten/mirrorball/ktor/MirrorballKtorComposableContentScope {
+	public static final field $stable I
+	public fun <init> (Lio/ktor/util/pipeline/PipelineContext;)V
+	public final fun content (Lkotlin/jvm/functions/Function3;)V
+	public final fun getContext ()Lio/ktor/util/pipeline/PipelineContext;
+}
+

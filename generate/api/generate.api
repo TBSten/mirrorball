@@ -1,0 +1,198 @@
+public abstract interface class me/tbsten/mirrorball/generate/Attribute {
+	public abstract fun getHtmlName ()Ljava/lang/String;
+	public abstract fun getKotlinName ()Ljava/lang/String;
+}
+
+public final class me/tbsten/mirrorball/generate/AttributeKt {
+	public static final fun fileContent (Lme/tbsten/mirrorball/generate/Attribute;Lme/tbsten/mirrorball/generate/Element;)Ljava/lang/String;
+}
+
+public final class me/tbsten/mirrorball/generate/BooleanAttribute : me/tbsten/mirrorball/generate/Attribute {
+	public static final field $stable I
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;)Lme/tbsten/mirrorball/generate/BooleanAttribute;
+	public static synthetic fun copy$default (Lme/tbsten/mirrorball/generate/BooleanAttribute;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lme/tbsten/mirrorball/generate/BooleanAttribute;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getHtmlName ()Ljava/lang/String;
+	public fun getKotlinName ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class me/tbsten/mirrorball/generate/ConstantsKt {
+	public static final field AttributesPackageName Ljava/lang/String;
+	public static final field ElementsPackageName Ljava/lang/String;
+	public static final field LibraryPackageName Ljava/lang/String;
+	public static final fun getNotEditMessage ()Ljava/lang/String;
+	public static final fun libraryClassName (Ljava/lang/String;)Lcom/squareup/kotlinpoet/ClassName;
+}
+
+public final class me/tbsten/mirrorball/generate/Element {
+	public static final field $stable I
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;ZLjava/util/List;Ljava/util/Map;Ljava/util/List;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;ZLjava/util/List;Ljava/util/Map;Ljava/util/List;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Z
+	public final fun component4 ()Ljava/util/List;
+	public final fun component5 ()Ljava/util/Map;
+	public final fun component6 ()Ljava/util/List;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;ZLjava/util/List;Ljava/util/Map;Ljava/util/List;)Lme/tbsten/mirrorball/generate/Element;
+	public static synthetic fun copy$default (Lme/tbsten/mirrorball/generate/Element;Ljava/lang/String;Ljava/lang/String;ZLjava/util/List;Ljava/util/Map;Ljava/util/List;ILjava/lang/Object;)Lme/tbsten/mirrorball/generate/Element;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAttrs ()Ljava/util/List;
+	public final fun getElementName ()Ljava/lang/String;
+	public final fun getHasContent ()Z
+	public final fun getInitialAttrs ()Ljava/util/Map;
+	public final fun getKotlinName ()Ljava/lang/String;
+	public final fun getParent ()Ljava/util/List;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class me/tbsten/mirrorball/generate/ElementAttrsBuilderScope {
+	public static final field $stable I
+	public fun <init> ()V
+	public final fun getAttrs ()Ljava/util/List;
+	public final fun getInitialAttrs ()Ljava/util/Map;
+	public final fun initialAttr (Ljava/lang/String;Ljava/lang/String;)V
+	public final fun unaryPlus (Lme/tbsten/mirrorball/generate/Attribute;)V
+}
+
+public abstract interface annotation class me/tbsten/mirrorball/generate/ElementDefineDsl : java/lang/annotation/Annotation {
+}
+
+public final class me/tbsten/mirrorball/generate/EnumAttrValuesScope {
+	public static final field $stable I
+	public fun <init> ()V
+	public final fun getValues ()Ljava/util/List;
+	public final fun unaryPlus (Lme/tbsten/mirrorball/generate/EnumAttributeEntry;)V
+}
+
+public final class me/tbsten/mirrorball/generate/EnumAttribute : me/tbsten/mirrorball/generate/Attribute {
+	public static final field $stable I
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/util/List;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;)Lme/tbsten/mirrorball/generate/EnumAttribute;
+	public static synthetic fun copy$default (Lme/tbsten/mirrorball/generate/EnumAttribute;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;ILjava/lang/Object;)Lme/tbsten/mirrorball/generate/EnumAttribute;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getHtmlName ()Ljava/lang/String;
+	public fun getKotlinName ()Ljava/lang/String;
+	public final fun getValues ()Ljava/util/List;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class me/tbsten/mirrorball/generate/EnumAttributeEntry {
+	public static final field $stable I
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;)Lme/tbsten/mirrorball/generate/EnumAttributeEntry;
+	public static synthetic fun copy$default (Lme/tbsten/mirrorball/generate/EnumAttributeEntry;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lme/tbsten/mirrorball/generate/EnumAttributeEntry;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getEntryName ()Ljava/lang/String;
+	public final fun getEntryValue ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class me/tbsten/mirrorball/generate/MainKt {
+	public static synthetic fun main ([Ljava/lang/String;)V
+	public static final fun main ([Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public final class me/tbsten/mirrorball/generate/ModelKt {
+	public static final fun boolAttr (Lme/tbsten/mirrorball/generate/ElementAttrsBuilderScope;Ljava/lang/String;Ljava/lang/String;)Lme/tbsten/mirrorball/generate/BooleanAttribute;
+	public static synthetic fun boolAttr$default (Lme/tbsten/mirrorball/generate/ElementAttrsBuilderScope;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lme/tbsten/mirrorball/generate/BooleanAttribute;
+	public static final fun elementOf (Ljava/lang/String;Ljava/lang/String;ZLjava/util/List;Lkotlin/jvm/functions/Function1;)Lme/tbsten/mirrorball/generate/Element;
+	public static synthetic fun elementOf$default (Ljava/lang/String;Ljava/lang/String;ZLjava/util/List;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lme/tbsten/mirrorball/generate/Element;
+	public static final fun entry (Lme/tbsten/mirrorball/generate/EnumAttrValuesScope;Ljava/lang/String;)Lme/tbsten/mirrorball/generate/EnumAttributeEntry;
+	public static final fun entry (Lme/tbsten/mirrorball/generate/EnumAttrValuesScope;Ljava/lang/String;Ljava/lang/String;)Lme/tbsten/mirrorball/generate/EnumAttributeEntry;
+	public static final fun enumAttr (Lme/tbsten/mirrorball/generate/ElementAttrsBuilderScope;Ljava/lang/String;Ljava/lang/String;Lkotlin/jvm/functions/Function1;)Lme/tbsten/mirrorball/generate/EnumAttribute;
+	public static synthetic fun enumAttr$default (Lme/tbsten/mirrorball/generate/ElementAttrsBuilderScope;Ljava/lang/String;Ljava/lang/String;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lme/tbsten/mirrorball/generate/EnumAttribute;
+	public static final fun numAttr (Lme/tbsten/mirrorball/generate/ElementAttrsBuilderScope;Ljava/lang/String;Ljava/lang/String;)Lme/tbsten/mirrorball/generate/NumberAttribute;
+	public static synthetic fun numAttr$default (Lme/tbsten/mirrorball/generate/ElementAttrsBuilderScope;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lme/tbsten/mirrorball/generate/NumberAttribute;
+	public static final fun strAttr (Lme/tbsten/mirrorball/generate/ElementAttrsBuilderScope;Ljava/lang/String;Ljava/lang/String;)Lme/tbsten/mirrorball/generate/StringAttribute;
+	public static synthetic fun strAttr$default (Lme/tbsten/mirrorball/generate/ElementAttrsBuilderScope;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lme/tbsten/mirrorball/generate/StringAttribute;
+}
+
+public final class me/tbsten/mirrorball/generate/NumberAttribute : me/tbsten/mirrorball/generate/Attribute {
+	public static final field $stable I
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;)Lme/tbsten/mirrorball/generate/NumberAttribute;
+	public static synthetic fun copy$default (Lme/tbsten/mirrorball/generate/NumberAttribute;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lme/tbsten/mirrorball/generate/NumberAttribute;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getHtmlName ()Ljava/lang/String;
+	public fun getKotlinName ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class me/tbsten/mirrorball/generate/StringAttribute : me/tbsten/mirrorball/generate/Attribute {
+	public static final field $stable I
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;)Lme/tbsten/mirrorball/generate/StringAttribute;
+	public static synthetic fun copy$default (Lme/tbsten/mirrorball/generate/StringAttribute;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lme/tbsten/mirrorball/generate/StringAttribute;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getHtmlName ()Ljava/lang/String;
+	public fun getKotlinName ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class me/tbsten/mirrorball/generate/UtilsKt {
+	public static final fun autoGenerateFileSpecBuilder (Ljava/lang/String;)Lcom/squareup/kotlinpoet/FileSpec$Builder;
+	public static final fun autoGenerateFileSpecBuilder (Ljava/lang/String;Ljava/lang/String;)Lcom/squareup/kotlinpoet/FileSpec$Builder;
+	public static final fun cleanAndMkdir (Ljava/io/File;)V
+	public static final fun kebabCase2LowerCamelCase (Ljava/lang/String;)Ljava/lang/String;
+	public static final fun kebabCase2UpperCamelCase (Ljava/lang/String;)Ljava/lang/String;
+	public static final fun lowerCamelCase2UpperCamelCase (Ljava/lang/String;)Ljava/lang/String;
+	public static final fun upperCamelCase2KebabCase (Ljava/lang/String;)Ljava/lang/String;
+	public static final fun upperCamelCase2LowerCamelCase (Ljava/lang/String;)Ljava/lang/String;
+}
+
+public final class me/tbsten/mirrorball/generate/attributes/EnumAttributeKt {
+	public static final fun attrEnumTypeSpec (Lme/tbsten/mirrorball/generate/EnumAttribute;Lcom/squareup/kotlinpoet/ClassName;)Lcom/squareup/kotlinpoet/TypeSpec;
+}
+
+public final class me/tbsten/mirrorball/generate/attributes/GlboalAttrsKt {
+	public static final fun generateGlobalAttrsFile (Ljava/io/File;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public final class me/tbsten/mirrorball/generate/definition/AttributesKt {
+	public static final fun getGlobalAttributes ()Ljava/util/List;
+}
+
+public final class me/tbsten/mirrorball/generate/definition/ElementsKt {
+	public static final fun getElements ()Ljava/util/List;
+	public static final fun referrerPolicyAttr (Lme/tbsten/mirrorball/generate/ElementAttrsBuilderScope;)Lme/tbsten/mirrorball/generate/EnumAttribute;
+}
+
+public final class me/tbsten/mirrorball/generate/definition/InputElementsKt {
+	public static final fun getInputElements ()Ljava/util/List;
+	public static final fun inputElementOf (Ljava/lang/String;Ljava/lang/String;Lkotlin/jvm/functions/Function1;)Lme/tbsten/mirrorball/generate/Element;
+}
+
+public final class me/tbsten/mirrorball/generate/elements/ElementComposableFileKt {
+	public static final fun elementComposableFile (Ljava/lang/String;Ljava/lang/String;)Lcom/squareup/kotlinpoet/FileSpec$Builder;
+}
+
+public final class me/tbsten/mirrorball/generate/elements/ElementContentScopeKt {
+	public static final fun elementContentScopeFile (Ljava/lang/String;)Lcom/squareup/kotlinpoet/FileSpec$Builder;
+}
+
+public final class me/tbsten/mirrorball/generate/elements/GenerateElementsFilesKt {
+	public static final fun generateElementsFiles (Ljava/io/File;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+

@@ -1,0 +1,69 @@
+public final class me/tbsten/mirrorball/demo/client/slot/shared/BasicSlot : me/tbsten/mirrorball/bow/slot/Slot {
+	public static final field $stable I
+	public static final field INSTANCE Lme/tbsten/mirrorball/demo/client/slot/shared/BasicSlot;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun hashCode ()I
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class me/tbsten/mirrorball/demo/client/slot/shared/SlotWithArgs : me/tbsten/mirrorball/bow/slot/Slot {
+	public static final field $stable I
+	public static final field Companion Lme/tbsten/mirrorball/demo/client/slot/shared/SlotWithArgs$Companion;
+	public fun <init> (Ljava/lang/String;I)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()I
+	public final fun copy (Ljava/lang/String;I)Lme/tbsten/mirrorball/demo/client/slot/shared/SlotWithArgs;
+	public static synthetic fun copy$default (Lme/tbsten/mirrorball/demo/client/slot/shared/SlotWithArgs;Ljava/lang/String;IILjava/lang/Object;)Lme/tbsten/mirrorball/demo/client/slot/shared/SlotWithArgs;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getInt ()I
+	public final fun getStr ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public synthetic class me/tbsten/mirrorball/demo/client/slot/shared/SlotWithArgs$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field $stable I
+	public static final field INSTANCE Lme/tbsten/mirrorball/demo/client/slot/shared/SlotWithArgs$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lme/tbsten/mirrorball/demo/client/slot/shared/SlotWithArgs;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lme/tbsten/mirrorball/demo/client/slot/shared/SlotWithArgs;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class me/tbsten/mirrorball/demo/client/slot/shared/SlotWithArgs$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class me/tbsten/mirrorball/demo/client/slot/shared/SlotWithComposableArg : me/tbsten/mirrorball/bow/slot/Slot {
+	public static final field $stable I
+	public static final field Companion Lme/tbsten/mirrorball/demo/client/slot/shared/SlotWithComposableArg$Companion;
+	public fun <init> (Lme/tbsten/mirrorball/bow/SerializableComposableLambda;)V
+	public final fun component1 ()Lme/tbsten/mirrorball/bow/SerializableComposableLambda;
+	public final fun copy (Lme/tbsten/mirrorball/bow/SerializableComposableLambda;)Lme/tbsten/mirrorball/demo/client/slot/shared/SlotWithComposableArg;
+	public static synthetic fun copy$default (Lme/tbsten/mirrorball/demo/client/slot/shared/SlotWithComposableArg;Lme/tbsten/mirrorball/bow/SerializableComposableLambda;ILjava/lang/Object;)Lme/tbsten/mirrorball/demo/client/slot/shared/SlotWithComposableArg;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getRenderResult ()Lme/tbsten/mirrorball/bow/SerializableComposableLambda;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public synthetic class me/tbsten/mirrorball/demo/client/slot/shared/SlotWithComposableArg$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field $stable I
+	public static final field INSTANCE Lme/tbsten/mirrorball/demo/client/slot/shared/SlotWithComposableArg$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lme/tbsten/mirrorball/demo/client/slot/shared/SlotWithComposableArg;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lme/tbsten/mirrorball/demo/client/slot/shared/SlotWithComposableArg;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class me/tbsten/mirrorball/demo/client/slot/shared/SlotWithComposableArg$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+

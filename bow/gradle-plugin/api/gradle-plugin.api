@@ -1,0 +1,105 @@
+public final class me/tbsten/mirrorball/bow/gradle/plugin/BowConfiguration {
+	public static final field Companion Lme/tbsten/mirrorball/bow/gradle/plugin/BowConfiguration$Companion;
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lme/tbsten/mirrorball/bow/gradle/plugin/JvmRunTask;)V
+	public final fun getCapitalizedConfName ()Ljava/lang/String;
+	public final fun getConfName ()Ljava/lang/String;
+	public final fun getJsBuildOutputDir ()Ljava/lang/String;
+	public final fun getJsBuildTask ()Ljava/lang/String;
+	public final fun getJvmBuildOutputDir ()Ljava/lang/String;
+	public final fun getJvmBuildTask ()Ljava/lang/String;
+	public final fun getJvmRunTask ()Lme/tbsten/mirrorball/bow/gradle/plugin/JvmRunTask;
+}
+
+public final class me/tbsten/mirrorball/bow/gradle/plugin/BowConfiguration$Companion {
+	public final fun getDev ()Lme/tbsten/mirrorball/bow/gradle/plugin/BowConfiguration;
+	public final fun getProd ()Lme/tbsten/mirrorball/bow/gradle/plugin/BowConfiguration;
+}
+
+public class me/tbsten/mirrorball/bow/gradle/plugin/BowPlugin : org/gradle/api/Plugin {
+	public fun <init> ()V
+	public synthetic fun apply (Ljava/lang/Object;)V
+	public fun apply (Lorg/gradle/api/Project;)V
+}
+
+public final class me/tbsten/mirrorball/bow/gradle/plugin/BowPluginEntryProjects {
+	public fun <init> ()V
+	public final fun clientScript (Lorg/gradle/api/Project;Ljava/lang/String;)V
+	public final fun clientScript (Lorg/gradle/api/artifacts/ProjectDependency;Ljava/lang/String;)V
+	public final fun invoke (Lkotlin/jvm/functions/Function1;)V
+	public final fun server (Lorg/gradle/api/Project;)V
+	public final fun server (Lorg/gradle/api/artifacts/ProjectDependency;)V
+}
+
+public class me/tbsten/mirrorball/bow/gradle/plugin/BowPluginExtension {
+	public fun <init> ()V
+	public final fun getConfigurations ()Ljava/util/List;
+	public final fun getEntryProjects ()Lme/tbsten/mirrorball/bow/gradle/plugin/BowPluginEntryProjects;
+}
+
+public class me/tbsten/mirrorball/bow/gradle/plugin/BowServerPlugin : org/gradle/api/Plugin {
+	public fun <init> ()V
+	public synthetic fun apply (Ljava/lang/Object;)V
+	public fun apply (Lorg/gradle/api/Project;)V
+}
+
+public final class me/tbsten/mirrorball/bow/gradle/plugin/BuildTaskKt {
+	public static final fun registerBuildTask (Lorg/gradle/api/Project;Lme/tbsten/mirrorball/bow/gradle/plugin/BowConfiguration;Lorg/gradle/api/provider/Provider;Lme/tbsten/mirrorball/bow/gradle/plugin/BowPluginExtension;)V
+}
+
+public final class me/tbsten/mirrorball/bow/gradle/plugin/ConstsKt {
+	public static final field ClientScriptFileName Ljava/lang/String;
+	public static final field GroupId Ljava/lang/String;
+}
+
+public abstract interface class me/tbsten/mirrorball/bow/gradle/plugin/JvmRunTask {
+}
+
+public final class me/tbsten/mirrorball/bow/gradle/plugin/JvmRunTask$Error : me/tbsten/mirrorball/bow/gradle/plugin/JvmRunTask {
+	public fun <init> (Ljava/lang/String;)V
+	public final fun getMessage ()Ljava/lang/String;
+}
+
+public final class me/tbsten/mirrorball/bow/gradle/plugin/JvmRunTask$RunTask : me/tbsten/mirrorball/bow/gradle/plugin/JvmRunTask {
+	public fun <init> (Ljava/lang/String;)V
+	public final fun getTaskName ()Ljava/lang/String;
+}
+
+public final class me/tbsten/mirrorball/bow/gradle/plugin/RunTaskKt {
+	public static final fun registerRunTask (Lorg/gradle/api/Project;Lme/tbsten/mirrorball/bow/gradle/plugin/BowConfiguration;Lorg/gradle/api/provider/Provider;Lme/tbsten/mirrorball/bow/gradle/plugin/BowPluginExtension;)V
+}
+
+public final class me/tbsten/mirrorball/bow/gradle/plugin/util/ExtensionsKt {
+	public static final fun fatJar (Lorg/gradle/api/Project;Lkotlin/jvm/functions/Function1;)V
+	public static final fun kotlinJvm (Lorg/gradle/api/Project;Lkotlin/jvm/functions/Function1;)V
+	public static final fun kotlinMultiplatform (Lorg/gradle/api/Project;Lkotlin/jvm/functions/Function1;)V
+	public static final fun ksp (Lorg/gradle/api/Project;Lkotlin/jvm/functions/Function1;)V
+	public static final fun ktor (Lorg/gradle/api/Project;Lkotlin/jvm/functions/Function1;)V
+}
+
+public final class me/tbsten/mirrorball/bow/gradle/plugin/util/ProviderKt {
+	public static final fun dir (Lorg/gradle/api/provider/Provider;Ljava/lang/String;)Lorg/gradle/api/provider/Provider;
+	public static final fun file (Lorg/gradle/api/provider/Provider;Ljava/lang/String;)Lorg/gradle/api/provider/Provider;
+	public static final fun files (Lorg/gradle/api/provider/Provider;[Ljava/lang/String;)Lorg/gradle/api/provider/Provider;
+}
+
+public final class me/tbsten/mirrorball/bow/gradle/plugin/util/StringKt {
+	public static final fun toUpperCamelCase (Ljava/lang/Iterable;)Ljava/lang/String;
+	public static final fun toUpperCamelCase (Ljava/lang/String;)Ljava/lang/String;
+}
+
+public final class me/tbsten/mirrorball/bow/gradle/plugin/util/UtilKt {
+	public static final fun requireNotNull (Ljava/lang/Object;Lkotlin/jvm/functions/Function0;)Ljava/lang/Object;
+}
+
+public final class me/tbsten/mirrorball/bow/gradle/plugin/util/WriterKt {
+	public static final fun writeFile (Ljava/io/File;Lkotlin/jvm/functions/Function2;)V
+	public static final fun writeFile (Lorg/gradle/api/file/RegularFile;Lkotlin/jvm/functions/Function2;)V
+	public static final fun writeFile (Lorg/gradle/api/provider/Provider;Lkotlin/jvm/functions/Function2;)V
+}
+
+public final class me/tbsten/mirrorball/bow/server/util/LinedWriter {
+	public fun <init> (Ljava/io/Writer;)V
+	public final fun writeln (Ljava/lang/String;)V
+	public static synthetic fun writeln$default (Lme/tbsten/mirrorball/bow/server/util/LinedWriter;Ljava/lang/String;ILjava/lang/Object;)V
+}
+
