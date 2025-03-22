@@ -1,5 +1,8 @@
 # mirrorball -kotlin web framework powered by compose-runtime
 
+> [!CAUTION]
+> I found an alternative framework [Kobweb](https://github.com/varabyte/kobweb). If you found it, you should switch to [Kobweb](https://github.com/varabyte/kobweb).
+
 mirrorball ("Mirabo") is a framework for developing web apps using Kotlin and Jetpack Compose.
 
 ```kt
